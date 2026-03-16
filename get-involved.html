@@ -96,7 +96,7 @@
 
     <section id="volunteer" class="mt-8 p-6 bg-slate-50 rounded-lg border" data-aos="fade-up" data-aos-delay="120">
       <h2 class="font-heading text-xl font-semibold">Volunteer Signup</h2>
-      <form name="volunteer" method="POST" data-netlify="true" action="success.html" onsubmit="submitToFirebase(event, 'volunteer')" class="mt-4 grid sm:grid-cols-2 gap-4">
+      <form name="volunteer" method="POST" onsubmit="submitToFirebase(event, 'volunteer')" class="mt-4 grid sm:grid-cols-2 gap-4">
         <input type="hidden" name="form-name" value="volunteer" />
         <input class="input" name="full_name" placeholder="Full name" required />
         <input class="input" type="email" name="email" placeholder="Email" required />
@@ -134,7 +134,7 @@
 
     <section id="partner" class="mt-8 p-6 bg-slate-50 rounded-lg border" data-aos="fade-up" data-aos-delay="200">
       <h2 class="font-heading text-xl font-semibold">Partner With Us</h2>
-      <form name="partner" method="POST" data-netlify="true" action="success.html" onsubmit="submitToFirebase(event, 'partner')" class="mt-4 grid sm:grid-cols-2 gap-4">
+      <form name="partner" method="POST" onsubmit="submitToFirebase(event, 'partner')" class="mt-4 grid sm:grid-cols-2 gap-4">
         <input type="hidden" name="form-name" value="partner" />
         <input class="input" name="org_name" placeholder="Organization name" required />
         <input class="input" name="contact_person" placeholder="Contact person" required />
@@ -179,7 +179,7 @@
       </div>
       <div>
         <h4 class="font-heading font-semibold">Newsletter</h4>
-        <form name="newsletter" method="POST" data-netlify="true" action="success.html" onsubmit="submitToFirebase(event, 'newsletter')" class="mt-3 flex gap-2">
+        <form name="newsletter" method="POST" onsubmit="submitToFirebase(event, 'newsletter')" class="mt-3 flex gap-2">
           <input type="hidden" name="form-name" value="newsletter" />
           <input required aria-label="Email" type="email" name="email" placeholder="Email address" class="flex-1 px-3 py-2 rounded-md text-ink" />
           <button class="px-4 py-2 rounded-md bg-accent text-ink font-semibold">Sign up</button>

@@ -106,7 +106,7 @@
         </section>
         <section class="p-6 bg-white rounded-lg border" data-aos="fade-up" data-aos-delay="160">
           <h2 class="font-heading text-xl font-semibold">Send a Message</h2>
-          <form name="contact" method="POST" data-netlify="true" action="success.html" onsubmit="submitToFirebase(event, 'contact')" class="mt-4 grid sm:grid-cols-2 gap-4">
+          <form name="contact" method="POST" onsubmit="submitToFirebase(event, 'contact')" class="mt-4 grid sm:grid-cols-2 gap-4">
             <input type="hidden" name="form-name" value="contact" />
             <input class="input" name="full_name" placeholder="Full name" required />
             <input class="input" type="email" name="email" placeholder="Email" required />
@@ -155,7 +155,7 @@
       </div>
       <div>
         <h4 class="font-heading font-semibold">Newsletter</h4>
-        <form name="newsletter" method="POST" data-netlify="true" action="success.html" onsubmit="submitToFirebase(event, 'newsletter')" class="mt-3 flex gap-2">
+        <form name="newsletter" method="POST" onsubmit="submitToFirebase(event, 'newsletter')" class="mt-3 flex gap-2">
           <input type="hidden" name="form-name" value="newsletter" />
           <input required aria-label="Email" type="email" name="email" placeholder="Email address" class="flex-1 px-3 py-2 rounded-md text-ink" />
           <button class="px-4 py-2 rounded-md bg-accent text-ink font-semibold">Sign up</button>
