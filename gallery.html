@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gallery & Impact — Empowering Youth</title>
+  <link rel="icon" href="EmpoweringYouthLogo.jpg" />
+  <meta name="description" content="Gallery and impact highlights from Empowering Youth — photos and snapshots from our events, outreach and programs." />
+  <meta property="og:title" content="Gallery & Impact — Empowering Youth" />
+  <meta property="og:description" content="Browse photos and impact snapshots from our events and outreach across Pietermaritzburg." />
+  <link rel="canonical" href="https://empoweringyouth.org.za/gallery.html" />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/site.prod.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script defer src="assets/js/site.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"/>
+</head>
+<body class="font-body text-ink bg-white">
+  <header class="sticky top-0 z-40 bg-white/90 backdrop-blur border-b fade-in fade-delay-100" x-data="{ open:false }">
+    <nav class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+      <div class="flex items-center gap-3">
+        <a href="index.html" class="flex items-center gap-2">
+          <img src="EmpoweringYouthLogo.jpg" alt="Empowering Youth logo" class="h-9 w-auto" />
+          <span class="font-heading font-semibold text-primary hidden sm:inline">Empowering Youth</span>
+        </a>
+      </div>
+      <div class="hidden md:flex items-center gap-6">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="about.html">About</a>
+        <a class="nav-link" href="programs.html">Programs</a>
+        <a class="nav-link" href="events.html">Events</a>
+        <a class="nav-link" href="gallery.html">Gallery</a>
+        <a class="nav-link" href="get-involved.html">Get Involved</a>
+        <a class="nav-link" href="contact.html">Contact</a>
+      </div>
+      <div class="flex items-center gap-3">
+        <a href="get-involved.html#donate" class="hidden md:inline-block px-4 py-2 rounded-md bg-primary text-white">Donate</a>
+        <button type="button" class="md:hidden inline-flex items-center justify-center p-2 rounded-md border border-slate-200" @click="open = !open" aria-label="Toggle navigation">
+          <svg x-show="!open" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16" /></svg>
+          <svg x-show="open" x-cloak xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12" /></svg>
+        </button>
+      </div>
+    </nav>
+    <div class="md:hidden border-t bg-white" x-show="open" x-transition.origin.top.left x-cloak>
+      <div class="mx-auto max-w-7xl px-4 py-3 space-y-2">
+        <a class="block nav-link" href="index.html">Home</a>
+        <a class="block nav-link" href="about.html">About</a>
+        <a class="block nav-link" href="programs.html">Programs</a>
+        <a class="block nav-link" href="events.html">Events</a>
+        <a class="block nav-link" href="gallery.html">Gallery</a>
+        <a class="block nav-link" href="get-involved.html">Get Involved</a>
+        <a class="block nav-link" href="contact.html">Contact</a>
+        <a href="get-involved.html#donate" class="btn btn-primary w-full mt-2">Donate</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10" x-data="galleryList()" x-init="load()">
+    <div class="flex items-center justify-between">
+      <h1 class="font-heading text-3xl md:text-4xl font-bold" data-aos="fade-up">Gallery & Impact</h1>
+    </div>
+
+    <!-- Static gallery sections for events (fallback and quick access) -->
+    <section id="Centocow" class="mt-8">
+      <h2 class="font-heading text-xl font-semibold">Centocow Rural Outreach</h2>
+      <p class="text-sm text-slate-600 mt-1">Photos from our outreach to Bulwer (Centocow).</p>
+      <div class="mt-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <a href="assets/gallery/Centocow.jpg" download><img src="assets/gallery/Centocow.jpg" alt="Centocow" class="w-full h-48 object-cover rounded-lg" loading="lazy" /></a>
+        <a href="assets/gallery/Centocow_1.jpg" download><img src="assets/gallery/Centocow_1.jpg" alt="Centocow" class="w-full h-48 object-cover rounded-lg" loading="lazy" /></a>
+        <a href="assets/gallery/Centocow_2.jpg" download><img src="assets/gallery/Centocow_2.jpg" alt="Centocow" class="w-full h-48 object-cover rounded-lg" loading="lazy" /></a>
+        <a href="assets/gallery/Centocow_3.jpg" download><img src="assets/gallery/Centocow_3.jpg" alt="Centocow" class="w-full h-48 object-cover rounded-lg" loading="lazy" /></a>
+        <a href="assets/gallery/Centocow_4.jpg" download><img src="assets/gallery/Centocow_4.jpg" alt="Centocow" class="w-full h-48 object-cover rounded-lg" loading="lazy" /></a>
+        <a href="assets/gallery/Centocow_5.jpg" download><img src="assets/gallery/Centocow_5.jpg" alt="Centocow" class="w-full h-48 object-cover rounded-lg" loading="lazy" /></a>
+        <a href="assets/gallery/Centocow_6.jpg" download><img src="assets/gallery/Centocow_6.jpg" alt="Centocow" class="w-full h-48 object-cover rounded-lg" loading="lazy" /></a>
+      </div>
+      <div class="mt-3">
+        <a class="btn btn-outline" href="assets/gallery/Centocow.jpg" download>Download images</a>
+      </div>
+    </section>
+
+    <section id="Sweetwater" class="mt-10">
+      <h2 class="font-heading text-xl font-semibold">Sweetwater — After-School Cross Night</h2>
+      <p class="text-sm text-slate-600 mt-1">Photos and video from the Sweetwater session with Funda After School Program.</p>
+      <div class="mt-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <a href="assets/gallery/Sweetwater (1).jpg" download><img src="assets/gallery/Sweetwater (1).jpg" alt="Sweetwater" class="w-full h-48 object-cover rounded-lg" loading="lazy" /></a>
+        <a href="assets/gallery/Sweetwater (2).jpg" download><img src="assets/gallery/Sweetwater (2).jpg" alt="Sweetwater" class="w-full h-48 object-cover rounded-lg" loading="lazy" /></a>
+        <a href="assets/gallery/Sweetwater (3).jpg" download><img src="assets/gallery/Sweetwater (3).jpg" alt="Sweetwater" class="w-full h-48 object-cover rounded-lg" loading="lazy" /></a>
+        <a href="assets/gallery/Sweetwater (4).jpg" download><img src="assets/gallery/Sweetwater (4).jpg" alt="Sweetwater" class="w-full h-48 object-cover rounded-lg" loading="lazy" /></a>
+        <a href="assets/gallery/Sweetwater (5).jpg" download><img src="assets/gallery/Sweetwater (5).jpg" alt="Sweetwater" class="w-full h-48 object-cover rounded-lg" loading="lazy" /></a>
+        <a href="assets/gallery/Sweetwater (6).jpg" download><img src="assets/gallery/Sweetwater (6).jpg" alt="Sweetwater" class="w-full h-48 object-cover rounded-lg" loading="lazy" /></a>
+        <a href="assets/gallery/Sweetwater (7).jpg" download><img src="assets/gallery/Sweetwater (7).jpg" alt="Sweetwater" class="w-full h-48 object-cover rounded-lg" loading="lazy" /></a>
+        <a href="assets/gallery/Sweetwater (8).jpg" download><img src="assets/gallery/Sweetwater (8).jpg" alt="Sweetwater" class="w-full h-48 object-cover rounded-lg" loading="lazy" /></a>
+        <a href="assets/gallery/Sweetwater (9).jpg" download><img src="assets/gallery/Sweetwater (9).jpg" alt="Sweetwater" class="w-full h-48 object-cover rounded-lg" loading="lazy" /></a>
+        <a href="assets/gallery/Sweetwater (10).jpg" download><img src="assets/gallery/Sweetwater (10).jpg" alt="Sweetwater" class="w-full h-48 object-cover rounded-lg" loading="lazy" /></a>
+        <a href="assets/gallery/Sweetwater (11).jpg" download><img src="assets/gallery/Sweetwater (11).jpg" alt="Sweetwater" class="w-full h-48 object-cover rounded-lg" loading="lazy" /></a>
+        <a href="assets/gallery/Sweetwater (12).jpg" download><img src="assets/gallery/Sweetwater (12).jpg" alt="Sweetwater" class="w-full h-48 object-cover rounded-lg" loading="lazy" /></a>
+        <a href="assets/gallery/Sweetwater (13).jpg" download><img src="assets/gallery/Sweetwater (13).jpg" alt="Sweetwater" class="w-full h-48 object-cover rounded-lg" loading="lazy" /></a>
+        <a href="assets/gallery/Sweetwater (14).jpg" download><img src="assets/gallery/Sweetwater (14).jpg" alt="Sweetwater" class="w-full h-48 object-cover rounded-lg" loading="lazy" /></a>
+        <a href="assets/gallery/Sweetwater (15).jpg" download><img src="assets/gallery/Sweetwater (15).jpg" alt="Sweetwater" class="w-full h-48 object-cover rounded-lg" loading="lazy" /></a>
+        <a href="assets/gallery/Sweetwater (16).jpg" download><img src="assets/gallery/Sweetwater (16).jpg" alt="Sweetwater" class="w-full h-48 object-cover rounded-lg" loading="lazy" /></a>
+        <a href="assets/gallery/Sweetwater (17).jpg" download><img src="assets/gallery/Sweetwater (17).jpg" alt="Sweetwater" class="w-full h-48 object-cover rounded-lg" loading="lazy" /></a>
+        <a href="assets/gallery/Sweetwater (18).jpg" download><img src="assets/gallery/Sweetwater (18).jpg" alt="Sweetwater" class="w-full h-48 object-cover rounded-lg" loading="lazy" /></a>
+        <a href="assets/gallery/Sweetwater (19).jpg" download><img src="assets/gallery/Sweetwater (19).jpg" alt="Sweetwater" class="w-full h-48 object-cover rounded-lg" loading="lazy" /></a>
+        <a href="assets/gallery/Sweetwater (20).jpg" download><img src="assets/gallery/Sweetwater (20).jpg" alt="Sweetwater" class="w-full h-48 object-cover rounded-lg" loading="lazy" /></a>
+        <a href="assets/gallery/Sweetwater (21).jpg" download><img src="assets/gallery/Sweetwater (21).jpg" alt="Sweetwater" class="w-full h-48 object-cover rounded-lg" loading="lazy" /></a>
+        <a href="assets/gallery/Sweetwater (22).jpg" download><img src="assets/gallery/Sweetwater (22).jpg" alt="Sweetwater" class="w-full h-48 object-cover rounded-lg" loading="lazy" /></a>
+        <a href="assets/gallery/Sweetwater Main.jpg" download><img src="assets/gallery/Sweetwater Main.jpg" alt="Sweetwater main" class="w-full h-48 object-cover rounded-lg" loading="lazy" /></a>
+        <!-- Video (link opens in new tab) -->
+        <a href="assets/gallery/Sweetwater (1).mp4" target="_blank" class="col-span-full inline-flex items-center justify-center p-2 bg-black text-white rounded">Play Sweetwater video</a>
+      </div>
+      <div class="mt-3">
+        <a class="btn btn-outline" href="assets/gallery/Sweetwater (1).jpg" download>Download images</a>
+      </div>
+    </section>
+
+
+    <div class="mt-8 columns-1 sm:columns-2 lg:columns-3 gap-4 [column-fill:_balance]">
+      <template x-for="(g, idx) in filtered()" :key="g.src">
+        <figure class="mb-4 break-inside-avoid" data-aos="fade-up" :data-aos-delay="idx * 40">
+          <div class="relative cursor-zoom-in" @click="open(g, idx)">
+            <picture>
+              <source :srcset="makeWebpSrcset(g.src)" type="image/webp" />
+              <img class="w-full rounded-lg" :src="g.src" :srcset="makeSrcset(g.src)" sizes="(max-width: 768px) 100vw, 400px" :alt="g.alt" loading="lazy" @error="eyImageFallback($event)" />
+            </picture>
+            <a :href="g.src" :download="g.src.split('/').pop()" class="absolute right-2 top-2 bg-white/80 text-xs px-2 py-1 rounded shadow" @click.stop>Download</a>
+          </div>
+          <figcaption class="text-xs text-slate-600 mt-1 flex items-center justify-between">
+            <span x-text="g.caption"></span>
+            <a :href="g.src" :download="g.src.split('/').pop()" class="text-xs underline" @click.stop>Download</a>
+          </figcaption>
+        </figure>
+      </template>
+    </div>
+
+    <!-- Additional static gallery sections -->
+    <section id="LibraryServices" class="mt-10">
+      <h2 class="font-heading text-xl font-semibold">Library Services Recognition</h2>
+      <p class="text-sm text-slate-600 mt-1">Recognition by Msunduzi Municipality for our support to library services.</p>
+      <div class="mt-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <img src="assets/gallery/Library Services Recognition.jpg" alt="Library Recognition" class="w-full h-48 object-cover rounded-lg" loading="lazy" />
+        <img src="assets/gallery/Library Services Recognition_1.jpg" alt="Library Recognition" class="w-full h-48 object-cover rounded-lg" loading="lazy" />
+      </div>
+      <div class="mt-3 flex gap-3">
+        <a class="btn btn-primary" href="events.html#library-services-recognition">Learn more</a>
+        <a class="btn btn-outline" href="assets/gallery/Library Services Recognition.jpg" download>Download</a>
+      </div>
+    </section>
+
+    <section id="EndViolence" class="mt-10">
+      <h2 class="font-heading text-xl font-semibold">End Violence Against Women</h2>
+      <p class="text-sm text-slate-600 mt-1">In solidarity with Women for Change we stand against GBV.</p>
+      <div class="mt-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <a href="assets/gallery/End Violence Against Women.jpg" download><img src="assets/gallery/End Violence Against Women.jpg" alt="End Violence Against Women" class="w-full h-48 object-cover rounded-lg" loading="lazy" /></a>
+      </div>
+      <div class="mt-3 flex gap-3">
+        <a class="btn btn-outline" href="events.html#list">Learn more</a>
+        <a class="btn btn-outline" href="assets/gallery/End Violence Against Women.jpg" download>Download</a>
+      </div>
+    </section>
+
+    <section id="FinalExams" class="mt-10">
+      <h2 class="font-heading text-xl font-semibold">Final Exams — Good luck!</h2>
+      <p class="text-sm text-slate-600 mt-1">Empowering Youth wishes learners all the best for their final exams.</p>
+      <div class="mt-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <a href="assets/gallery/Final Exams.jpg" download><img src="assets/gallery/Final Exams.jpg" alt="Final Exams" class="w-full h-48 object-cover rounded-lg" loading="lazy" /></a>
+      </div>
+      <div class="mt-3 flex gap-3">
+        <a class="btn btn-outline" href="events.html#list">Learn more</a>
+        <a class="btn btn-outline" href="assets/gallery/Final Exams.jpg" download>Download</a>
+      </div>
+    </section>
+
+    <section id="Applications" class="mt-10">
+      <h2 class="font-heading text-xl font-semibold">Application Support</h2>
+      <p class="text-sm text-slate-600 mt-1">Application support sessions and drop-ins.</p>
+      <div class="mt-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <a href="assets/gallery/Applications.jpeg" download><img src="assets/gallery/Applications.jpeg" alt="Applications" class="w-full h-48 object-cover rounded-lg" loading="lazy" /></a>
+      </div>
+      <div class="mt-3 flex gap-3">
+        <a class="btn btn-outline" href="events.html#list">Learn more</a>
+        <a class="btn btn-outline" href="assets/gallery/Applications.jpeg" download>Download</a>
+      </div>
+    </section>
+
+    <section id="Eastwoood" class="mt-10">
+      <h2 class="font-heading text-xl font-semibold">Eastwoood Library — NSFAS Drive</h2>
+      <p class="text-sm text-slate-600 mt-1">Photos from our NSFAS application drive at Eastwoood Library.</p>
+      <div class="mt-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <a href="assets/gallery/Eastwoood Library.jpg" download><img src="assets/gallery/Eastwoood Library.jpg" alt="Eastwoood Library" class="w-full h-48 object-cover rounded-lg" loading="lazy" /></a>
+        <a href="assets/gallery/Eastwoood Library_1.jpg" download><img src="assets/gallery/Eastwoood Library_1.jpg" alt="Eastwoood Library" class="w-full h-48 object-cover rounded-lg" loading="lazy" /></a>
+        <a href="assets/gallery/Eastwoood Library_2.jpg" download><img src="assets/gallery/Eastwoood Library_2.jpg" alt="Eastwoood Library" class="w-full h-48 object-cover rounded-lg" loading="lazy" /></a>
+        <a href="assets/gallery/Eastwoood Library_3.jpg" download><img src="assets/gallery/Eastwoood Library_3.jpg" alt="Eastwoood Library" class="w-full h-48 object-cover rounded-lg" loading="lazy" /></a>
+        <a href="assets/gallery/Eastwoood Library_4.jpg" download><img src="assets/gallery/Eastwoood Library_4.jpg" alt="Eastwoood Library" class="w-full h-48 object-cover rounded-lg" loading="lazy" /></a>
+        <a href="assets/gallery/Eastwoood Library_5.jpg" download><img src="assets/gallery/Eastwoood Library_5.jpg" alt="Eastwoood Library" class="w-full h-48 object-cover rounded-lg" loading="lazy" /></a>
+        <a href="assets/gallery/Eastwoood Library_6.jpg" download><img src="assets/gallery/Eastwoood Library_6.jpg" alt="Eastwoood Library" class="w-full h-48 object-cover rounded-lg" loading="lazy" /></a>
+        <a href="assets/gallery/Eastwoood Library_7.jpg" download><img src="assets/gallery/Eastwoood Library_7.jpg" alt="Eastwoood Library" class="w-full h-48 object-cover rounded-lg" loading="lazy" /></a>
+        <a href="assets/gallery/Eastwoood Library_8.jpg" download><img src="assets/gallery/Eastwoood Library_8.jpg" alt="Eastwoood Library" class="w-full h-48 object-cover rounded-lg" loading="lazy" /></a>
+      </div>
+      <div class="mt-3 flex gap-3">
+        <a class="btn btn-primary" href="events.html#nsfas-application-drive-eastwoood">Learn more</a>
+        <a class="btn btn-outline" href="assets/gallery/Eastwoood Library.jpg" download>Download images</a>
+      </div>
+    </section>
+
+    <section id="MsunduziYouth" class="mt-10">
+      <h2 class="font-heading text-xl font-semibold">Msunduzi Youth — Application Support</h2>
+      <p class="text-sm text-slate-600 mt-1">Scenes from our collaboration with the Msunduzi Youth Office.</p>
+      <div class="mt-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <img src="assets/gallery/Msunduzi Youth_1.jpg" alt="Msunduzi Youth" class="w-full h-48 object-cover rounded-lg" loading="lazy" />
+        <img src="assets/gallery/Msunduzi Youth_2.jpg" alt="Msunduzi Youth" class="w-full h-48 object-cover rounded-lg" loading="lazy" />
+        <img src="assets/gallery/Msunduzi Youth_3.jpg" alt="Msunduzi Youth" class="w-full h-48 object-cover rounded-lg" loading="lazy" />
+      </div>
+      <div class="mt-3 flex gap-3">
+        <a class="btn btn-primary" href="events.html#nsfas-msunduzi-youth-office">Learn more</a>
+        <a class="btn btn-outline" href="assets/gallery/Msunduzi Youth_1.jpg" download>Download images</a>
+      </div>
+    </section>
+
+    <section id="Siyanqoba" class="mt-10">
+      <h2 class="font-heading text-xl font-semibold">Siyanqoba ExtraLessons — NCV & NSFAS</h2>
+      <p class="text-sm text-slate-600 mt-1">Support sessions and application assistance.</p>
+      <div class="mt-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <img src="assets/gallery/Siyanqoba ExtraLessons_1.jpg" alt="Siyanqoba" class="w-full h-48 object-cover rounded-lg" loading="lazy" />
+        <img src="assets/gallery/Siyanqoba ExtraLessons_2.jpg" alt="Siyanqoba" class="w-full h-48 object-cover rounded-lg" loading="lazy" />
+        <img src="assets/gallery/Siyanqoba ExtraLessons_3.jpg" alt="Siyanqoba" class="w-full h-48 object-cover rounded-lg" loading="lazy" />
+      </div>
+      <div class="mt-3 flex gap-3">
+        <a class="btn btn-primary" href="events.html#siyanqoba-extralessons-ncv-nsfas">Learn more</a>
+        <a class="btn btn-outline" href="assets/gallery/Siyanqoba ExtraLessons_1.jpg" download>Download images</a>
+      </div>
+    </section>
+
+    <section id="Bhekuximba" class="mt-10">
+      <h2 class="font-heading text-xl font-semibold">Bhekuximba High School — Applications</h2>
+      <p class="text-sm text-slate-600 mt-1">Helping matriculants with higher education applications.</p>
+      <div class="mt-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <img src="assets/gallery/Bhekuximba_1.jpg" alt="Bhekuximba" class="w-full h-48 object-cover rounded-lg" loading="lazy" />
+        <img src="assets/gallery/Bhekuximba_2.jpg" alt="Bhekuximba" class="w-full h-48 object-cover rounded-lg" loading="lazy" />
+        <img src="assets/gallery/Bhekuximba_3.jpg" alt="Bhekuximba" class="w-full h-48 object-cover rounded-lg" loading="lazy" />
+      </div>
+      <div class="mt-3 flex gap-3">
+        <a class="btn btn-primary" href="events.html#bhekuximba-high-school-application-support">Learn more</a>
+        <a class="btn btn-outline" href="assets/gallery/Bhekuximba_1.jpg" download>Download images</a>
+      </div>
+    </section>
+
+    <section id="Funda" class="mt-10">
+      <h2 class="font-heading text-xl font-semibold">Funda — Psychosocial & Life Skills</h2>
+      <p class="text-sm text-slate-600 mt-1">Interactive life-skills and psychosocial development sessions.</p>
+      <div class="mt-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <img src="assets/gallery/Funda_1.jpg" alt="Funda" class="w-full h-48 object-cover rounded-lg" loading="lazy" />
+        <img src="assets/gallery/Funda_2.jpg" alt="Funda" class="w-full h-48 object-cover rounded-lg" loading="lazy" />
+        <img src="assets/gallery/Funda_3.jpg" alt="Funda" class="w-full h-48 object-cover rounded-lg" loading="lazy" />
+      </div>
+      <div class="mt-3 flex gap-3">
+        <a class="btn btn-primary" href="events.html#funda-psychosocial-program">Learn more</a>
+        <a class="btn btn-outline" href="assets/gallery/Funda_1.jpg" download>Download images</a>
+      </div>
+    </section>
+
+    <!-- New date-based event sections -->
+    <section id="May 19 ____1" class="mt-10">
+      <h2 class="font-heading text-xl font-semibold">Youth Sports Day — Bulwer</h2>
+      <p class="text-sm text-slate-600 mt-1">Team-building and sports activities facilitated by Empowering Youth with LifeLine Pietermaritzburg.</p>
+      <div class="mt-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <img src="assets/gallery/May 19 ____1.jpg" alt="Youth Sports Day" class="w-full h-48 object-cover rounded-lg" loading="lazy" />
+        <img src="assets/gallery/May 19 ____2.jpg" alt="Youth Sports Day" class="w-full h-48 object-cover rounded-lg" loading="lazy" />
+        <img src="assets/gallery/May 19 ____3.jpg" alt="Youth Sports Day" class="w-full h-48 object-cover rounded-lg" loading="lazy" />
+      </div>
+      <div class="mt-3 flex gap-3">
+        <a class="btn btn-outline" href="assets/gallery/May 19 ____1.jpg" download>Download images</a>
+        <a class="btn btn-primary" href="events.html#youth-sports-day-bulwer-2025-06-15">Learn more</a>
+      </div>
+    </section>
+
+    <section id="June 7___1" class="mt-10">
+      <h2 class="font-heading text-xl font-semibold">Mandlezizwe High School — Application Support</h2>
+      <p class="text-sm text-slate-600 mt-1">Support for matriculants with higher education applications in partnership with LifeLine Pietermaritzburg.</p>
+      <div class="mt-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <img src="assets/gallery/June 7___1.jpg" alt="Mandlezizwe" class="w-full h-48 object-cover rounded-lg" loading="lazy" />
+        <img src="assets/gallery/June 7___2.jpg" alt="Mandlezizwe" class="w-full h-48 object-cover rounded-lg" loading="lazy" />
+        <img src="assets/gallery/June 7___3.jpg" alt="Mandlezizwe" class="w-full h-48 object-cover rounded-lg" loading="lazy" />
+      </div>
+      <div class="mt-3 flex gap-3">
+        <a class="btn btn-outline" href="assets/gallery/June 7___1.jpg" download>Download images</a>
+        <a class="btn btn-primary" href="events.html#mandlezizwe-application-support-2025-06-07">Learn more</a>
+      </div>
+    </section>
+
+    <section id="May 20____1" class="mt-10">
+      <h2 class="font-heading text-xl font-semibold">CAO Application Drive — Copesville</h2>
+      <p class="text-sm text-slate-600 mt-1">Assisting Grade 12 learners with CAO and higher education applications.</p>
+      <div class="mt-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <img src="assets/gallery/May 20____1.jpg" alt="Copesville CAO Drive" class="w-full h-48 object-cover rounded-lg" loading="lazy" />
+        <img src="assets/gallery/May 20____2.jpg" alt="Copesville CAO Drive" class="w-full h-48 object-cover rounded-lg" loading="lazy" />
+      </div>
+      <div class="mt-3 flex gap-3">
+        <a class="btn btn-outline" href="assets/gallery/May 20____1.jpg" download>Download images</a>
+        <a class="btn btn-primary" href="events.html#cao-copesville-2025-05-20">Learn more</a>
+      </div>
+    </section>
+
+    <section id="May 15 ____1" class="mt-10">
+      <h2 class="font-heading text-xl font-semibold">Umvuzo High School — Outreach</h2>
+      <p class="text-sm text-slate-600 mt-1">Partnership activities supporting academic excellence with local colleges and partners.</p>
+      <div class="mt-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <a href="assets/gallery/May 15 ____1.jpg" download><img src="assets/gallery/May 15 ____1.jpg" alt="Umvuzo" class="w-full h-48 object-cover rounded-lg" loading="lazy" /></a>
+        <a href="assets/gallery/May 15 ____2.jpg" download><img src="assets/gallery/May 15 ____2.jpg" alt="Umvuzo" class="w-full h-48 object-cover rounded-lg" loading="lazy" /></a>
+      </div>
+      <div class="mt-3 flex gap-3">
+        <a class="btn btn-outline" href="assets/gallery/May 15 ____1.jpg" download>Download images</a>
+        <a class="btn btn-primary" href="events.html#umvuzo-high-school-2025-05-15">Learn more</a>
+      </div>
+    </section>
+
+    <!-- Lightbox / Carousel -->
+    <div x-show="modal" x-transition class="fixed inset-0 z-50 bg-black/70 flex items-center justify-center p-4 ey-lightbox" @click.self="close()" role="dialog" aria-modal="true" :aria-label="items[activeIndex].caption" tabindex="-1">
+      <div class="relative max-w-5xl w-full">
+        <button class="absolute left-2 top-1/2 -translate-y-1/2 btn btn-outline" @click="prev()">◀</button>
+        <div class="mx-auto flex items-center justify-center">
+          <template x-if="items[activeIndex] && items[activeIndex].type === 'video'">
+            <video :src="items[activeIndex].src" controls class="max-h-[80vh] rounded-lg shadow-2xl"/>
+          </template>
+          <template x-if="items[activeIndex] && (!items[activeIndex].type || items[activeIndex].type !== 'video')">
+            <picture>
+              <source :srcset="makeWebpSrcset(items[activeIndex].src)" type="image/webp" />
+              <img :src="items[activeIndex].src" :srcset="makeSrcset(items[activeIndex].src)" :alt="items[activeIndex].alt" class="max-h-[80vh] rounded-lg shadow-2xl" />
+            </picture>
+          </template>
+        </div>
+        <button class="absolute right-2 top-1/2 -translate-y-1/2 btn btn-outline" @click="next()">▶</button>
+        <button class="absolute top-2 right-2 btn btn-outline" @click="close()">Back</button>
+        <a :href="items[activeIndex].src" download class="absolute right-16 top-1/2 -translate-y-1/2 btn btn-outline">⬇</a>
+        <div class="mt-3 flex gap-2 overflow-x-auto p-2 bg-white/5">
+          <template x-for="(it, i) in items" :key="it.src">
+            <img :src="it.src" @click="activeIndex = i" :class="{'ring-2 ring-accent': i === activeIndex}" class="h-16 w-24 object-cover rounded cursor-pointer border" />
+          </template>
+        </div>
+      </div>
+    </div>
+  </main>
+
+<footer class="bg-ink text-white py-10" data-aos="fade-up" data-aos-delay="280">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid md:grid-cols-4 gap-8">
+      <div>
+        <img src="EmpoweringYouthLogo.jpg" alt="Empowering Youth logo" class="h-10 w-auto" />
+        <p class="mt-3 text-sm opacity-90">Starling Rd, Eastwood, Pietermaritzburg, 3201, South Africa</p>
+        <p class="text-sm opacity-90">Phone: 071 349 7282</p>
+        <p class="text-sm opacity-90">Email: <a href="mailto:empoweringyouthkzn@gmail.com" class="underline">empoweringyouthkzn@gmail.com</a></p>
+        <div class="social-links">
+          <a href="https://web.facebook.com/profile.php?id=100081208311599&sk=photos&_rdc=1&_rdr#" target="_blank"><i class="fab fa-facebook"></i></a>
+          <a href="https://instagram.com/empoweringyouth_" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.tiktok.com/@empowering.youth1" target="_blank"><i class="fab fa-tiktok"></i></a>
+        </div>
+      </div>
+      <div>
+        <h4 class="font-heading font-semibold">Quick Links</h4>
+        <ul class="mt-3 space-y-2 text-sm">
+          <li><a href="about.html" class="hover:underline">About</a></li>
+          <li><a href="programs.html" class="hover:underline">Programs</a></li>
+          <li><a href="events.html" class="hover:underline">Events</a></li>
+          <li><a href="get-involved.html" class="hover:underline">Get Involved</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-heading font-semibold">Bank Details</h4>
+        <ul class="mt-3 text-sm opacity-90">
+          <li>Standard Bank</li>
+          <li>Empowering Youth NPO</li>
+          <li>Acc: 1018382808</li>
+          <li>MyMoBiz (Current)</li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-heading font-semibold">Newsletter</h4>
+        <form name="newsletter" method="POST" data-netlify="true" action="success.html" onsubmit="submitToFirebase(event, 'newsletter')" class="mt-3 flex gap-2">
+          <input type="hidden" name="form-name" value="newsletter" />
+          <input required aria-label="Email" type="email" name="email" placeholder="Email address" class="flex-1 px-3 py-2 rounded-md text-ink" />
+          <button class="px-4 py-2 rounded-md bg-accent text-ink font-semibold">Sign up</button>
+        </form>
+      </div>
+    </div>
+      <a href="https://www.dumatechsolutions.co.za" target="_blank"><div class="mt-8 text-center text-xs opacity-70">© <span id="year"></span> Empowering Youth. All rights reserved. | Powered by Duma Tech Solutions</div></a>
+  </footer>
+
+
+
+  <a href="https://wa.me/27713497282" class="fixed bottom-6 right-6 bg-green-500 text-white px-4 py-3 rounded-full shadow-lg fade-in fade-delay-400" target="_blank" rel="noopener">WhatsApp</a>
+  <a href="get-involved.html#donate" class="fixed bottom-6 right-36 bg-accent text-ink px-4 py-3 rounded-full shadow-lg fade-in fade-delay-400">Donate</a>
+  <script>document.getElementById('year').textContent = new Date().getFullYear(); setActiveNav();</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script> if(window.AOS) AOS.init({ once: true, duration: 900, easing: 'ease-out-cubic', offset: 120 }); </script>
+</body>
+</html>

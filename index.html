@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Empowering Youth</title>
+  <link rel="icon" href="EmpoweringYouthLogo.jpg" />
+  <meta name="description" content="Empowering Youth helps learners access higher education and life skills through NSFAS/CAO support, career expos, financial literacy, and psychosocial programs across Pietermaritzburg and surrounding regions." />
+  <meta name="keywords" content="youth empowerment, NSFAS support, CAO assistance, career expo Pietermaritzburg, financial literacy youth" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/site.prod.css" />
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script defer src="assets/js/site.js"></script>
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js"></script>
+  <script>
+    // Firebase configuration - replace with your actual config from Firebase console
+    const firebaseConfig = {
+      apiKey: "your-api-key",
+      authDomain: "your-project.firebaseapp.com",
+      projectId: "your-project-id",
+      storageBucket: "your-project.appspot.com",
+      messagingSenderId: "123456789",
+      appId: "your-app-id"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+
+    // Function to submit form data to Firebase
+    async function submitToFirebase(event, formName) {
+      event.preventDefault();
+      const form = event.target;
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData.entries());
+      data.timestamp = new Date();
+      data.form = formName;
+      try {
+        await db.collection('form-submissions').add(data);
+        alert('Form submitted successfully!');
+        form.reset();
+      } catch (error) {
+        console.error('Error submitting form:', error);
+        alert('Error submitting form. Please try again.');
+      }
+    }
+  </script>
+  <!-- Preload first slideshow images for faster first paint -->
+  <link rel="preload" as="image" href="assets/gallery/Slideshow.jpg">
+  <link rel="preload" as="image" href="assets/gallery/Slideshow (2).jpg">
+  <!-- Bootstrap removed: using Tailwind/Alpine slideshow to avoid conflicts -->
+  <!-- AOS (used by the overlay animation) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"/>
+
+  <style>
+    /* Prevent carousel fade transition on first paint so hero appears instantly */
+    .no-transition .carousel-item { transition: none !important; }
+    /* Utility to temporarily disable Tailwind transitions for initial paint */
+    .transition-none { transition: none !important; }
+  </style>
+  <meta property="og:title" content="Empowering Youth — Develop · Support · Connect" />
+  <meta property="og:description" content="NSFAS/CAO support, life skills, career expos and more." />
+  <meta property="og:type" content="website" />
+</head>
+<body class="font-body text-ink bg-white">
+  <header class="sticky top-0 z-40 bg-white/90 backdrop-blur border-b fade-in fade-delay-100" x-data="{ open:false }">
+    <nav class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+      <div class="flex items-center gap-3">
+        <a href="index.html" class="flex items-center gap-2">
+          <img src="EmpoweringYouthLogo.jpg" alt="Empowering Youth logo" class="h-9 w-auto" />
+          <span class="font-heading font-semibold text-primary hidden sm:inline">Empowering Youth</span>
+        </a>
+      </div>
+      <div class="hidden md:flex items-center gap-6">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="about.html">About</a>
+        <a class="nav-link" href="programs.html">Programs</a>
+        <a class="nav-link" href="events.html">Events</a>
+        <a class="nav-link" href="gallery.html">Gallery</a>
+        <a class="nav-link" href="get-involved.html">Get Involved</a>
+
+      </nav>
+    <div class="md:hidden border-t bg-white" x-show="open" x-transition.origin.top.left x-cloak>
+      <div class="mx-auto max-w-7xl px-4 py-3 space-y-2">
+        <a class="block nav-link" href="index.html">Home</a>
+        <a class="block nav-link" href="about.html">About</a>
+        <a class="block nav-link" href="programs.html">Programs</a>
+        <a class="block nav-link" href="events.html">Events</a>
+        <a class="block nav-link" href="gallery.html">Gallery</a>
+        <a class="block nav-link" href="get-involved.html">Get Involved</a>
+        <a class="block nav-link" href="contact.html">Contact</a>
+        <a href="get-involved.html#donate" class="btn btn-primary w-full mt-2">Donate</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO (Tailwind + Alpine slideshow) -->
+  <section class="relative" x-data="heroSlideshow()" x-init="init()" role="region" aria-label="Homepage hero slideshow" data-aos="fade-up">
+    <div class="relative isolate overflow-hidden">
+      <template x-for="(slide, idx) in slides" :key="idx">
+        <img :src="slide" :alt="`Empowering Youth highlights — image ${idx+1}`" 
+             class="absolute inset-0 w-full h-[56vh] md:h-[68vh] object-cover object-center transition-opacity duration-700" 
+             :class="{ 'opacity-100': idx === current, 'opacity-0': idx !== current, 'transition-none': !ready }" 
+             :loading="idx === 0 ? 'eager' : 'lazy'" decoding="async" />
+      </template>
+
+      <div class="relative h-[56vh] md:h-[68vh]">
+        <div class="absolute inset-0 bg-black/40" aria-hidden="true"></div>
+        <div class="absolute inset-0 flex items-center">
+          <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="max-w-2xl text-white text-center">
+              <h1 class="font-heading text-3xl md:text-5xl font-bold" data-aos="fade-up">Empowering Youth to Learn, Grow, and Lead</h1>
+              <p class="mt-3 text-sm font-semibold tracking-wide uppercase" data-aos="fade-up" data-aos-delay="120">Develop - Connect - Support</p>
+              <p class="mt-4 text-lg md:text-xl" data-aos="fade-up" data-aos-delay="150">Free NSFAS, CAO &amp; TVET application support, life skills, career expos and more for youth across Pietermaritzburg and surrounding communities.</p>
+              <div class="mt-6 flex gap-3 justify-center">
+                <a href="get-involved.html#volunteer" class="btn btn-accent" data-aos="zoom-in" data-aos-delay="250">Get Involved</a>
+                <a href="events.html" class="btn btn-outline white" data-aos="zoom-in" data-aos-delay="300">Upcoming Events</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="absolute inset-x-0 bottom-3 flex justify-center gap-2">
+          <template x-for="(slide, idx) in slides" :key="idx">
+            <button type="button" class="h-2 w-2 rounded-full transition-all duration-300" :class="idx === current ? 'bg-accent w-6' : 'bg-white/50'" @click="goTo(idx)" :aria-label="`Go to slide ${idx+1}`"></button>
+          </template>
+        </div>
+      </div>
+    </div>
+
+    <!-- Marquee (simple JS animation) -->
+    <div id="marquee" class="py-2 bg-primary text-white text-center overflow-hidden">
+      <div id="marquee-text" class="inline-block whitespace-nowrap">Empowering Youth is registered in terms of the Non-Profit Organisations Act, 1997 (NPO: 242-292).</div>
+    </div>
+    <script>
+      const marqueeText = document.getElementById('marquee-text');
+      let position = 50;
+      setInterval(() => {
+        position -= 1;
+        if (position < -marqueeText.offsetWidth) position = 100;
+        marqueeText.style.transform = `translateX(${position}%)`;
+      }, 100);
+    </script>
+  </section>
+
+  <br>
+  <br>
+  <br>
+
+  <!-- Stats Section -->
+  <section class="py-16 bg-white">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-center mb-10">Education & Application Support</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+        <div class="p-8 bg-slate-50 rounded-lg shadow-md">
+          <div class="text-4xl md:text-5xl font-bold text-primary">3000+</div>
+          <div class="mt-3 text-base font-semibold">Learners Reached</div>
+        </div>
+        <div class="p-8 bg-slate-50 rounded-lg shadow-md">
+          <div class="text-4xl md:text-5xl font-bold text-primary">15+</div>
+          <div class="mt-3 text-base font-semibold">Schools Reached</div>
+        </div>
+        <div class="p-8 bg-slate-50 rounded-lg shadow-md">
+          <div class="text-4xl md:text-5xl font-bold text-primary">10+</div>
+          <div class="mt-3 text-base font-semibold">Community Programs Hosted</div>
+        </div>
+        <div class="p-8 bg-slate-50 rounded-lg shadow-md">
+          <div class="text-4xl md:text-5xl font-bold text-primary">3</div>
+          <div class="mt-3 text-base font-semibold">Schools in Bulwer Reached</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <!-- Impact counters -->
+    <section class="py-10 bg-slate-50 border-y" x-data="impact()" x-init="init()" data-aos="fade-up" data-aos-delay="80">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-6 text-center">
+          <template x-for="item in stats" :key="item.label">
+            <div class="p-4 bg-white rounded-lg shadow-sm">
+              <div class="text-3xl md:text-4xl font-bold text-primary" x-text="item.value"></div>
+              <div class="mt-1 text-sm font-semibold" x-text="item.label"></div>
+            </div>
+          </template>
+        </div>
+      </div>
+    </section>
+
+    <!-- About teaser -->
+    <section class="bg-white border-b" data-aos="fade-up" data-aos-delay="120">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 grid md:grid-cols-2 gap-8 items-center">
+        <div>
+          <h2 class="font-heading text-2xl md:text-3xl font-bold">Who we are</h2>
+          <p class="mt-3 text-slate-700">Empowering Youth is a registered non-profit organisation (NPO: 242-292) based in Pietermaritzburg. We empower young people from semi-rural, rural and urban communities with education support, life skills, health information and opportunities to lead.</p>
+          <p class="mt-3 text-slate-700">Rooted in the realities of the uMgungundlovu District, we walk alongside youth facing unemployment, poverty, gender-based violence and limited access to opportunities—helping them make informed decisions and build sustainable futures.</p>
+          <a href="about.html" class="btn btn-primary mt-4">Read more about us</a>
+        </div>
+        <div class="grid grid-cols-2 gap-4 text-sm">
+          <div class="card p-4">
+            <h3 class="font-heading font-semibold">Our vision</h3>
+            <p class="mt-2">A generation of young people in the uMgungundlovu District who can take control of their own lives and make informed decisions that enhance sustainability and wellbeing.</p>
+          </div>
+          <div class="card p-4">
+            <h3 class="font-heading font-semibold">Our approach</h3>
+            <p class="mt-2">We combine school-based programmes, community outreach and one-on-one support to connect young people to information, role models and real opportunities.</p>
+          </div>
+          <div class="card p-4">
+            <h3 class="font-heading font-semibold">Develop - Connect - Support</h3>
+            <p class="mt-2">Everything we do is guided by these three pillars, ensuring youth are not just informed but equipped and accompanied.</p>
+          </div>
+          <div class="card p-4">
+            <h3 class="font-heading font-semibold">Community rooted</h3>
+            <p class="mt-2">Born from the Source of Hope movement and led by local activists and community developers.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Programs -->
+    <section class="py-14" x-data="programsList()" x-init="loadPrograms(4)" data-aos="fade-up" data-aos-delay="160">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="flex items-end justify-between">
+          <h2 class="font-heading text-2xl md:text-3xl font-bold">Featured Programs</h2>
+          <a href="programs.html" class="text-primary font-semibold">See all</a>
+        </div>
+        <div class="mt-6 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <template x-for="p in programs" :key="p.slug">
+            <article class="card">
+                <div class="h-36 overflow-hidden rounded-t-md">
+                <img :src="p.image" :srcset="p.imageSrcset" sizes="(max-width: 768px) 100vw, 300px" :alt="p.title" class="w-full h-full object-cover" loading="lazy" />
+              </div>
+              <div class="p-4">
+                <h3 class="font-heading font-semibold" x-text="p.title"></h3>
+                <p class="mt-2 text-sm text-slate-700" x-text="p.excerpt"></p>
+                <a class="btn-link mt-3 inline-block" :href="'programs.html#' + p.slug">Learn More</a>
+              </div>
+            </article>
+          </template>
+          <!-- Static Centocow preview -->
+          <article class="card" data-aos="fade-up" data-aos-delay="80">
+            <div class="h-36 overflow-hidden rounded-t-md">
+              <img src="assets/gallery/Centocow_1.jpg" alt="Centocow" class="w-full h-full object-cover" loading="lazy" />
+            </div>
+            <div class="p-4">
+              <h3 class="font-heading font-semibold">Centocow Rural Outreach</h3>
+              <p class="mt-2 text-sm text-slate-700">A first-time outreach to Bulwer; community engagement beyond our district.</p>
+              <a class="btn-link mt-3 inline-block" href="events.html#centocow-rural-outreach">Learn More</a>
+            </div>
+          </article>
+
+          <!-- Static Sweetwater preview -->
+          <article class="card" data-aos="fade-up" data-aos-delay="140">
+            <div class="h-36 overflow-hidden rounded-t-md">
+              <img src="assets/gallery/Sweetwater (1).jpg" alt="Sweetwater" class="w-full h-full object-cover" loading="lazy" />
+            </div>
+            <div class="p-4">
+              <h3 class="font-heading font-semibold">Sweetwater — After-School Session</h3>
+              <p class="mt-2 text-sm text-slate-700">Fun, educational activities and capacity-building with Funda After School Program.</p>
+              <a class="btn-link mt-3 inline-block" href="events.html#sweetwaters-after-school-cross-night">Learn More</a>
+            </div>
+          </article>
+
+          <!-- Static Eastwoood preview -->
+          <article class="card" data-aos="fade-up" data-aos-delay="180">
+            <div class="h-36 overflow-hidden rounded-t-md">
+              <img src="assets/gallery/Eastwoood Library.jpg" alt="Eastwoood Library" class="w-full h-full object-cover" loading="lazy" />
+            </div>
+            <div class="p-4">
+              <h3 class="font-heading font-semibold">Eastwoood Library — NSFAS Drive</h3>
+              <p class="mt-2 text-sm text-slate-700">NSFAS application drive and bank account support in partnership with ABSA and the Msunduzi Youth Office.</p>
+              <a class="btn-link mt-3 inline-block" href="events.html#nsfas-application-drive-eastwoood">Learn More</a>
+            </div>
+          </article>
+          <!-- Static fallback for Library Services Recognition (in case data fetch fails) -->
+          <article class="card" data-aos="fade-up" data-aos-delay="220">
+            <div class="h-36 overflow-hidden rounded-t-md">
+              <img src="assets/gallery/Library Services Recognition.jpg" alt="Library Services Recognition" class="w-full h-full object-cover" loading="lazy" />
+            </div>
+            <div class="p-4">
+              <h3 class="font-heading font-semibold">Library Services Recognition</h3>
+              <p class="mt-2 text-sm text-slate-700">Empowering Youth was honoured to be recognised by the Msunduzi Municipality for our contribution to library services and youth programmes.</p>
+              <a class="btn-link mt-3 inline-block" href="programs.html#library-services-recognition">Learn More</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Latest Announcements -->
+    <section class="py-12 bg-slate-50">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <h2 class="font-heading text-2xl md:text-3xl font-bold">Latest Announcements</h2>
+        <div class="mt-6 flex flex-wrap gap-6 justify-center items-center">
+          <img src="Fundraising Lunch.jpg" alt="Fundraising Lunch Announcement" style="max-width: 420px; width: 100%; height: auto; display: block; border-radius: 12px; box-shadow: 0 2px 8px #0001;" />
+          <!-- To add more announcements, just add more <img> tags below -->
+          <!-- <img src="another-announcement.jpg" alt="Another Announcement" style="max-width: 420px; width: 100%; height: auto; display: block; border-radius: 12px; box-shadow: 0 2px 8px #0001;" /> -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Priority Service / Donate -->
+    <section class="py-12" data-aos="fade-up" data-aos-delay="200">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-8 items-center">
+        <div>
+          <h2 class="font-heading text-2xl md:text-3xl font-bold">Priority Application Service — R150</h2>
+          <p class="mt-3">Fast-tracked NSFAS/CAO applications outside KZN. Support our mission and help more learners access higher education.</p>
+          <ul class="mt-4 text-sm">
+            <li><strong>Bank:</strong> Standard Bank</li>
+            <li><strong>Account Name:</strong> Empowering Youth NPO</li>
+            <li><strong>Account Number:</strong> 1018382808</li>
+            <li><strong>Account Type:</strong> MyMoBiz (Current Account)</li>
+          </ul>
+          <div class="mt-4 flex gap-3">
+            <a class="btn btn-primary" href="get-involved.html#donate">Donate</a>
+            <a class="btn btn-outline" href="https://wa.me/27713497282" target="_blank" rel="noopener">WhatsApp Admin</a>
+          </div>
+        </div>
+        <div class="rounded-xl overflow-hidden shadow">
+          <img src="assets/gallery/Eastwoood Library_7.jpg" alt="Students receiving support" class="w-full h-72 object-cover" loading="lazy" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-12 bg-slate-50" data-aos="fade-up" data-aos-delay="220">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+          <div>
+            <h2 class="font-heading text-2xl md:text-3xl font-bold">What people say</h2>
+            <p class="mt-2 text-slate-600">Real words from young people, partners and community members who have engaged with Empowering Youth.</p>
+          </div>
+        </div>
+        <div class="mt-8 grid md:grid-cols-3 gap-6">
+          <figure class="card p-5 flex flex-col justify-between h-full">
+            <blockquote class="text-sm text-slate-700">“Welldone and may God bless your efforts.”</blockquote>
+            <figcaption class="mt-4 text-sm font-semibold text-slate-900">Khethiwhe Kunene</figcaption>
+          </figure>
+          <figure class="card p-5 flex flex-col justify-between h-full">
+            <blockquote class="text-sm text-slate-700">“Proud of you team.”</blockquote>
+            <figcaption class="mt-4 text-sm font-semibold text-slate-900">Sharon Oka Sihayo Ngobese</figcaption>
+          </figure>
+          <figure class="card p-5 flex flex-col justify-between h-full">
+            <blockquote class="text-sm text-slate-700">“Big up to the team.”</blockquote>
+            <figcaption class="mt-4 text-sm font-semibold text-slate-900">Luyanda Zakwe</figcaption>
+          </figure>
+          <figure class="card p-5 flex flex-col justify-between h-full">
+            <blockquote class="text-sm text-slate-700">“Well done Lindokuhle Allan Gwamanda and the team.”</blockquote>
+            <figcaption class="mt-4 text-sm font-semibold text-slate-900">Siyanda Gumede</figcaption>
+          </figure>
+          <figure class="card p-5 flex flex-col justify-between h-full">
+            <blockquote class="text-sm text-slate-700">“Great work guys.”</blockquote>
+            <figcaption class="mt-4 text-sm font-semibold text-slate-900">Love Incarnate</figcaption>
+          </figure>
+          <figure class="card p-5 flex flex-col justify-between h-full">
+            <blockquote class="text-sm text-slate-700">“I support this programme 100%, it needs to be promoted. Well done guys you’re reflecting this spirit in action!”</blockquote>
+            <figcaption class="mt-4 text-sm font-semibold text-slate-900">Simon Roseery</figcaption>
+          </figure>
+          <figure class="card p-5 flex flex-col justify-between h-full">
+            <blockquote class="text-sm text-slate-700">“It starts with us, building a strong foundation for the youth that will one day be the future leaders of our country.”</blockquote>
+            <figcaption class="mt-4 text-sm font-semibold text-slate-900">Sharon Oka Sihayo Ngobese</figcaption>
+          </figure>
+          <figure class="card p-5 flex flex-col justify-between h-full">
+            <blockquote class="text-sm text-slate-700">“Great stuff! Well done Empowering Youth.”</blockquote>
+            <figcaption class="mt-4 text-sm font-semibold text-slate-900">Innocent Sibonelo Msani</figcaption>
+          </figure>
+          <figure class="card p-5 flex flex-col justify-between h-full">
+            <blockquote class="text-sm text-slate-700">“Well done keep it up, I’m very proud & impressed of great work you are doing to our future leaders!!!”</blockquote>
+            <figcaption class="mt-4 text-sm font-semibold text-slate-900">Noloyiso Ndaba</figcaption>
+          </figure>
+          <figure class="card p-5 flex flex-col justify-between h-full">
+            <blockquote class="text-sm text-slate-700">“Salute Empowering Youth for a very progressive programme.”</blockquote>
+            <figcaption class="mt-4 text-sm font-semibold text-slate-900">Mphathi Ngubane</figcaption>
+          </figure>
+          <figure class="card p-5 flex flex-col justify-between h-full">
+            <blockquote class="text-sm text-slate-700">“Well done what a wonderful program to have post elections. Relevant and impactful; helping to grow future leaders. Much love.”</blockquote>
+            <figcaption class="mt-4 text-sm font-semibold text-slate-900">Khethiwhe Kunene</figcaption>
+          </figure>
+          <figure class="card p-5 flex flex-col justify-between h-full">
+            <blockquote class="text-sm text-slate-700">“You guys are doing a great job in our community.”</blockquote>
+            <figcaption class="mt-4 text-sm font-semibold text-slate-900">Nqobile Phakathi</figcaption>
+          </figure>
+          <figure class="card p-5 flex flex-col justify-between h-full">
+            <blockquote class="text-sm text-slate-700">“Keep up the excellent work.”</blockquote>
+            <figcaption class="mt-4 text-sm font-semibold text-slate-900">Alertify – Custom School Communicator</figcaption>
+          </figure>
+          <figure class="card p-5 flex flex-col justify-between h-full">
+            <blockquote class="text-sm text-slate-700">“Empowering a knowledge-driven society through education.”</blockquote>
+            <figcaption class="mt-4 text-sm font-semibold text-slate-900">Lwazi Madonsela</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- Partners & Get Involved summary -->
+    <section class="py-12 bg-white border-t" data-aos="fade-up" data-aos-delay="240">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-10">
+        <div>
+          <h2 class="font-heading text-2xl md:text-3xl font-bold">Our partners</h2>
+          <p class="mt-2 text-slate-600 max-w-2xl">We collaborate with organisations that share our vision of empowered, informed and engaged young people.</p>
+          <div class="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-6 items-center opacity-90">
+            <a href="https://www.facebook.com/profile.php/?id=100089673561864" target="_blank" rel="noopener">
+              <img src="https://placehold.co/160x48?text=YMCA" alt="YMCA" class="h-10 object-contain mx-auto" loading="lazy" />
+            </a>
+            <a href="https://www.facebook.com/MsunduziYouthManagementCenter/" target="_blank" rel="noopener">
+              <img src="https://placehold.co/160x48?text=Msunduzi+Youth" alt="Msunduzi Youth Office" class="h-10 object-contain mx-auto" loading="lazy" />
+            </a>
+            <a href="https://lifelinesa.co.za/" target="_blank" rel="noopener">
+              <img src="https://placehold.co/160x48?text=LifeLine+PMB" alt="LifeLine PMB" class="h-10 object-contain mx-auto" loading="lazy" />
+            </a>
+            <a href="https://africaunite.org.za/" target="_blank" rel="noopener">
+              <img src="https://placehold.co/160x48?text=Africa+Unite" alt="Africa Unite" class="h-10 object-contain mx-auto" loading="lazy" />
+            </a>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="card p-6 flex flex-col">
+            <h3 class="font-heading text-xl font-semibold">Volunteer with us</h3>
+            <p class="mt-2 text-sm text-slate-700">Facilitate workshops, mentor learners or support events in schools and communities.</p>
+            <a href="get-involved.html#volunteer" class="btn btn-primary mt-4 w-fit">Sign up to volunteer</a>
+          </div>
+          <div class="card p-6 flex flex-col">
+            <h3 class="font-heading text-xl font-semibold">Partner with Empowering Youth</h3>
+            <p class="mt-2 text-sm text-slate-700">Co-host programmes, sponsor sessions or bring your expertise to our initiatives.</p>
+            <a href="get-involved.html#partner" class="btn btn-primary mt-4 w-fit">Become a partner</a>
+          </div>
+          <div class="card p-6 flex flex-col">
+            <h3 class="font-heading text-xl font-semibold">Support financially</h3>
+            <p class="mt-2 text-sm text-slate-700">Your contribution helps us reach more young people with life-changing support.</p>
+            <a href="get-involved.html#donate" class="btn btn-primary mt-4 w-fit">Donate today</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-ink text-white py-10" data-aos="fade-up" data-aos-delay="280">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid md:grid-cols-4 gap-8">
+      <div>
+        <img src="EmpoweringYouthLogo.jpg" alt="Empowering Youth logo" class="h-10 w-auto" />
+        <p class="mt-3 text-sm opacity-90">Starling Rd, Eastwood, Pietermaritzburg, 3201, South Africa</p>
+        <p class="text-sm opacity-90">Phone: 071 349 7282</p>
+        <p class="text-sm opacity-90">Email: <a href="mailto:empoweringyouthkzn@gmail.com" class="underline">empoweringyouthkzn@gmail.com</a></p>
+        <div class="social-links">
+          <a href="https://web.facebook.com/profile.php?id=100081208311599&sk=photos&_rdc=1&_rdr#" target="_blank"><i class="fab fa-facebook"></i></a>
+          <a href="https://instagram.com/empoweringyouth_" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.tiktok.com/@empowering.youth1" target="_blank"><i class="fab fa-tiktok"></i></a>
+        </div>
+      </div>
+      <div>
+        <h4 class="font-heading font-semibold">Quick Links</h4>
+        <ul class="mt-3 space-y-2 text-sm">
+          <li><a href="about.html" class="hover:underline">About</a></li>
+          <li><a href="programs.html" class="hover:underline">Programs</a></li>
+          <li><a href="events.html" class="hover:underline">Events</a></li>
+          <li><a href="get-involved.html" class="hover:underline">Get Involved</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-heading font-semibold">Bank Details</h4>
+        <ul class="mt-3 text-sm opacity-90">
+          <li>Standard Bank</li>
+          <li>Empowering Youth NPO</li>
+          <li>Acc: 1018382808</li>
+          <li>MyMoBiz (Current)</li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-heading font-semibold">Newsletter</h4>
+        <form name="newsletter" method="POST" data-netlify="true" action="success.html" onsubmit="submitToFirebase(event, 'newsletter')" class="mt-3 flex gap-2">
+          <input type="hidden" name="form-name" value="newsletter" />
+          <input required aria-label="Email" type="email" name="email" placeholder="Email address" class="flex-1 px-3 py-2 rounded-md text-ink" />
+          <button class="px-4 py-2 rounded-md bg-accent text-ink font-semibold">Sign up</button>
+        </form>
+      </div>
+    </div>
+      <a href="https://www.dumatechsolutions.co.za" target="_blank"><div class="mt-8 text-center text-xs opacity-70">© <span id="year"></span> Empowering Youth. All rights reserved. | Powered by Duma Tech Solutions</div></a>
+  </footer>
+
+  <!-- Floating buttons -->
+  <a href="https://wa.me/27713497282" class="fixed bottom-6 right-6 bg-green-500 text-white px-4 py-3 rounded-full shadow-lg fade-in fade-delay-400" target="_blank" rel="noopener">WhatsApp</a>
+  <a href="get-involved.html#donate" class="fixed bottom-6 right-36 bg-accent text-ink px-4 py-3 rounded-full shadow-lg fade-in fade-delay-400">Donate</a>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    setActiveNav();
+  </script>
+
+  <!-- Alpine hero slideshow component -->
+  <script>
+    window.heroSlideshow = function(){
+      return {
+        slides:[
+          'assets/gallery/Slideshow.jpg',
+          'assets/gallery/Slideshow (2).jpg',
+          'assets/gallery/Slideshow (3).jpg',
+          'assets/gallery/Slideshow (4).jpg',
+          'assets/gallery/Slideshow (5).jpg',
+          'assets/gallery/Slideshow (6).jpg',
+          'assets/gallery/Slideshow (7).jpg',
+          'assets/gallery/Slideshow (8).jpg',
+          'assets/gallery/Slideshow (9).jpg',
+          'assets/gallery/Slideshow (10).jpg',
+          'assets/gallery/Slideshow (11).jpg',
+          'assets/gallery/Slideshow (12).jpg',
+          'assets/gallery/Slideshow (13).jpg',
+          'assets/gallery/Slideshow (14).jpg',
+          'assets/gallery/Slideshow (15).jpg'
+        ],
+        current:0,
+        ready:false,
+        intervalId:null,
+        init(){
+          // start auto-rotation after a short delay so first paint is immediate
+          // mark ready after first paint so CSS transitions apply only after hero is visible
+          requestAnimationFrame(()=>{ this.ready = true });
+          this.start();
+          try{
+            const el = document.querySelector('[x-data="heroSlideshow()"]');
+            if(el){
+              // Removed pause on hover
+            }
+          }catch(e){}
+          this._keyHandler = (e)=>{
+            if(e.key === 'ArrowLeft') this.goTo((this.current - 1 + this.slides.length) % this.slides.length);
+            if(e.key === 'ArrowRight') this.goTo((this.current + 1) % this.slides.length);
+          };
+          window.addEventListener('keydown', this._keyHandler);
+        },
+        start(){ if(this.intervalId) return; this.intervalId = setInterval(()=>{ this.current = (this.current+1)%this.slides.length }, 6000); },
+        pause(){ if(this.intervalId){ clearInterval(this.intervalId); this.intervalId = null } },
+        goTo(i){ this.current = i }
+      }
+    }
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script>
+    if(window.AOS) AOS.init({ once: true, duration: 900, easing: 'ease-out-cubic', mirror: false, offset: 120 });
+  </script>
+</body>
+</html>

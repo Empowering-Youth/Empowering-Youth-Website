@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>News & Events — Empowering Youth</title>
+  <link rel="icon" href="EmpoweringYouthLogo.jpg" />
+  <meta name="description" content="Latest news and upcoming events from Empowering Youth — stay updated with application drives, workshops and community outreach." />
+  <meta property="og:title" content="News & Events — Empowering Youth" />
+  <meta property="og:description" content="Read our latest announcements and see upcoming events supporting youth development in Pietermaritzburg." />
+  <link rel="canonical" href="https://empoweringyouth.org.za/events.html" />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/site.prod.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script defer src="assets/js/site.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"/>
+</head>
+<body class="font-body text-ink bg-white">
+  <header class="sticky top-0 z-40 bg-white/90 backdrop-blur border-b fade-in fade-delay-100" x-data="{ open:false }">
+    <nav class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+      <div class="flex items-center gap-3">
+        <a href="index.html" class="flex items-center gap-2">
+          <img src="EmpoweringYouthLogo.jpg" alt="Empowering Youth logo" class="h-9 w-auto" />
+          <span class="font-heading font-semibold text-primary hidden sm:inline">Empowering Youth</span>
+        </a>
+      </div>
+      <div class="hidden md:flex items-center gap-6">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="about.html">About</a>
+        <a class="nav-link" href="programs.html">Programs</a>
+        <a class="nav-link" href="events.html">Events</a>
+        <a class="nav-link" href="gallery.html">Gallery</a>
+        <a class="nav-link" href="get-involved.html">Get Involved</a>
+        <a class="nav-link" href="contact.html">Contact</a>
+      </div>
+      <div class="flex items-center gap-3">
+        <a href="get-involved.html#donate" class="hidden md:inline-block px-4 py-2 rounded-md bg-primary text-white">Donate</a>
+        <button type="button" class="md:hidden inline-flex items-center justify-center p-2 rounded-md border border-slate-200" @click="open = !open" aria-label="Toggle navigation">
+          <svg x-show="!open" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16" /></svg>
+          <svg x-show="open" x-cloak xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12" /></svg>
+        </button>
+      </div>
+    </nav>
+    <div class="md:hidden border-t bg-white" x-show="open" x-transition.origin.top.left x-cloak>
+      <div class="mx-auto max-w-7xl px-4 py-3 space-y-2">
+        <a class="block nav-link" href="index.html">Home</a>
+        <a class="block nav-link" href="about.html">About</a>
+        <a class="block nav-link" href="programs.html">Programs</a>
+        <a class="block nav-link" href="events.html">Events</a>
+        <a class="block nav-link" href="gallery.html">Gallery</a>
+        <a class="block nav-link" href="get-involved.html">Get Involved</a>
+        <a class="block nav-link" href="contact.html">Contact</a>
+        <a href="get-involved.html#donate" class="btn btn-primary w-full mt-2">Donate</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10" x-data="eventsList()" x-init="load()">
+    <!-- Anchors for news items so index 'Read more' links land on page even if event is dynamic -->
+    <div id="end-violence-against-women-2025-11-25"></div>
+    <div id="final-exams-wishes-2025-11-20"></div>
+    <div id="applications-support-2025-11-10"></div>
+    <div class="flex items-center justify-between">
+      <h1 class="font-heading text-3xl md:text-4xl font-bold" data-aos="fade-up">News & Events</h1>
+      <div class="flex gap-2 text-sm">
+        <button class="pill" :data-active="filter === 'all'" @click="filter='all'">All</button>
+        <button class="pill" :data-active="filter === 'Education'" @click="filter='Education'">Education</button>
+        <button class="pill" :data-active="filter === 'Health'" @click="filter='Health'">Health</button>
+        <button class="pill" :data-active="filter === 'Civic'" @click="filter='Civic'">Civic</button>
+        <button class="pill" :data-active="filter === 'Sports'" @click="filter='Sports'">Sports</button>
+      </div>
+    </div>
+
+    <div id="list" class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Static fallback event cards (visible even when fetch fails or site opened via file://) -->
+      <article id="centocow-rural-outreach" class="card smooth-transition" data-aos="fade-up">
+        <picture>
+          <source srcset="assets/gallery/Centocow.jpg" type="image/webp" />
+          <img src="assets/gallery/Centocow.jpg" alt="Centocow Rural Outreach" class="h-40 w-full object-cover rounded-t-md" loading="lazy" />
+        </picture>
+        <div class="p-4">
+          <div class="text-xs text-slate-500">19 November 2025 · Bulwer (Centocow)</div>
+          <h3 class="font-heading font-semibold mt-1">Centocow Rural Outreach</h3>
+          <p class="mt-2 text-sm">When we look back at this year, we see an incredible opportunity that came our way: the chance to work beyond the uMgungundlovu District. For the first time as an organisation, we travelled to Bulwer, deep in the rural areas. Engaging with communities outside our usual reach reminded us of the importance of our work and the impact we strive to make wherever we go.</p>
+          <a class="btn-link mt-3 inline-block" href="gallery.html#Centocow">View gallery</a>
+        </div>
+      </article>
+
+      <article id="sweetwaters-after-school-cross-night" class="card smooth-transition" data-aos="fade-up" data-aos-delay="80">
+        <picture>
+          <source srcset="assets/gallery/Sweetwater (1).jpg" type="image/webp" />
+          <img src="assets/gallery/Sweetwater (1).jpg" alt="Sweetwater After-School Cross Night" class="h-40 w-full object-cover rounded-t-md" loading="lazy" />
+        </picture>
+        <div class="p-4">
+          <div class="text-xs text-slate-500">15 November 2025 · Sweetwaters</div>
+          <h3 class="font-heading font-semibold mt-1">Sweetwaters After-School Cross Night</h3>
+          <p class="mt-2 text-sm">We were honoured to be invited by Funda the After School Program for their final “cross night” session. We brought fun, educational activities, hands-on learning and capacity-building exercises to help nurture and empower the students.</p>
+          <a class="btn-link mt-3 inline-block" href="gallery.html#Sweetwater">View gallery & video</a>
+        </div>
+      </article>
+
+      <template x-for="(e, idx) in visibleEvents" :key="e.slug">
+        <article :id="e.slug" class="card smooth-transition" data-aos="fade-up" :data-aos-delay="idx * 80">
+          <picture>
+            <source :srcset="makeWebpSrcset(e.image)" type="image/webp" />
+            <img :src="e.image" :srcset="makeSrcset(e.image)" :alt="e.title" class="h-40 w-full object-cover rounded-t-md" loading="lazy" />
+          </picture>
+          <div class="p-4">
+            <div class="text-xs text-slate-500" x-text="new Date(e.date).toLocaleString()"></div>
+            <h3 class="font-heading font-semibold mt-1" x-text="e.title"></h3>
+            <p class="mt-2 text-sm" x-text="e.excerpt"></p>
+            <button class="btn-link mt-3" @click="open(e, idx)">View details</button>
+          </div>
+        </article>
+      </template>
+      <!-- Static event cards for key recent events -->
+      <article id="nsfas-application-drive-eastwoood" class="card smooth-transition" data-aos="fade-up">
+        <picture>
+          <source srcset="assets/gallery/Eastwoood Library.jpg" type="image/webp" />
+          <img src="assets/gallery/Eastwoood Library.jpg" alt="Eastwoood Library NSFAS Drive" class="h-40 w-full object-cover rounded-t-md" loading="lazy" />
+        </picture>
+        <div class="p-4">
+          <div class="text-xs text-slate-500">5 December 2025 · Eastwoood Library</div>
+          <h3 class="font-heading font-semibold mt-1">NSFAS Application Drive — Eastwoood Library</h3>
+          <p class="mt-2 text-sm">Empowering Youth, in collaboration with the Msunduzi Youth Office, hosted an NSFAS Application Drive at Eastwoood Library to assist students with their 2026 NSFAS applications. Special thanks to ABSA Bank for support on the day.</p>
+          <a class="btn-link mt-3 inline-block" href="gallery.html#Eastwoood">View gallery</a>
+        </div>
+      </article>
+
+      <article id="nsfas-msunduzi-youth-office" class="card smooth-transition" data-aos="fade-up" data-aos-delay="80">
+        <picture>
+          <source srcset="assets/gallery/Msunduzi Youth_1.jpg" type="image/webp" />
+          <img src="assets/gallery/Msunduzi Youth_1.jpg" alt="Msunduzi Youth Application Support" class="h-40 w-full object-cover rounded-t-md" loading="lazy" />
+        </picture>
+        <div class="p-4">
+          <div class="text-xs text-slate-500">10 December 2025 · Msunduzi Youth Office</div>
+          <h3 class="font-heading font-semibold mt-1">NSFAS & Application Support — Msunduzi Youth Office</h3>
+          <p class="mt-2 text-sm">In collaboration with the Msunduzi Youth Development Office, we assisted young people with NSFAS and college applications. Keep an eye on our page for the next stop.</p>
+          <a class="btn-link mt-3 inline-block" href="gallery.html#MsunduziYouth">View gallery</a>
+        </div>
+      </article>
+
+      <article id="siyanqoba-extralessons-ncv-nsfas" class="card smooth-transition" data-aos="fade-up" data-aos-delay="160">
+        <picture>
+          <source srcset="assets/gallery/Siyanqoba ExtraLessons_1.jpg" type="image/webp" />
+          <img src="assets/gallery/Siyanqoba ExtraLessons_1.jpg" alt="Siyanqoba ExtraLessons" class="h-40 w-full object-cover rounded-t-md" loading="lazy" />
+        </picture>
+        <div class="p-4">
+          <div class="text-xs text-slate-500">12 October 2025 · Siyanqoba ExtraLessons</div>
+          <h3 class="font-heading font-semibold mt-1">Siyanqoba ExtraLessons — NCV & NSFAS Support</h3>
+          <p class="mt-2 text-sm">Empowering Youth was invited by Siyanqoba ExtraLessons to assist with NCV and NSFAS applications.</p>
+          <a class="btn-link mt-3 inline-block" href="gallery.html#Siyanqoba">View gallery</a>
+        </div>
+      </article>
+
+      <article id="bhekuximba-high-school-application-support" class="card smooth-transition" data-aos="fade-up" data-aos-delay="240">
+        <picture>
+          <source srcset="assets/gallery/Bhekuximba_1.jpg" type="image/webp" />
+          <img src="assets/gallery/Bhekuximba_1.jpg" alt="Bhekuximba High School" class="h-40 w-full object-cover rounded-t-md" loading="lazy" />
+        </picture>
+        <div class="p-4">
+          <div class="text-xs text-slate-500">30 September 2025 · Bhekuximba High School</div>
+          <h3 class="font-heading font-semibold mt-1">Bhekuximba High School — Application Support</h3>
+          <p class="mt-2 text-sm">We visited Bhekuximba High School to assist matriculants with higher education institution applications and provide guidance on next steps.</p>
+          <a class="btn-link mt-3 inline-block" href="gallery.html#Bhekuximba">View gallery</a>
+        </div>
+      </article>
+
+      <article id="funda-psychosocial-program" class="card smooth-transition" data-aos="fade-up" data-aos-delay="320">
+        <picture>
+          <source srcset="assets/gallery/Funda_1.jpg" type="image/webp" />
+          <img src="assets/gallery/Funda_1.jpg" alt="Funda Psychosocial Program" class="h-40 w-full object-cover rounded-t-md" loading="lazy" />
+        </picture>
+        <div class="p-4">
+          <div class="text-xs text-slate-500">15 November 2025 · Funda</div>
+          <h3 class="font-heading font-semibold mt-1">Funda After School — Psychosocial Program</h3>
+          <p class="mt-2 text-sm">Interactive psychosocial sessions and life-skills facilitation designed to promote resilience, teamwork and emotional intelligence among learners.</p>
+          <a class="btn-link mt-3 inline-block" href="gallery.html#Funda">View gallery</a>
+        </div>
+      </article>
+
+      <!-- New recent date-based events -->
+      <article id="youth-sports-day-bulwer-2025-06-15" class="card smooth-transition" data-aos="fade-up">
+        <picture>
+          <img src="assets/gallery/May 19 ____1.jpg" alt="Youth Sports Day — Bulwer" class="h-40 w-full object-cover rounded-t-md" loading="lazy" />
+        </picture>
+        <div class="p-4">
+          <div class="text-xs text-slate-500">15 June 2025 · Bulwer</div>
+          <h3 class="font-heading font-semibold mt-1">Youth Sports Day — Bulwer</h3>
+          <p class="mt-2 text-sm">Empowering Youth facilitated team-building sports activities at the Youth Sports Day held in Bulwer, organised by LifeLine Pietermaritzburg.</p>
+          <a class="btn-link mt-3 inline-block" href="gallery.html#May 19 ____1">View gallery</a>
+        </div>
+      </article>
+
+      <article id="mandlezizwe-application-support-2025-06-07" class="card smooth-transition" data-aos="fade-up" data-aos-delay="80">
+        <picture>
+          <img src="assets/gallery/June 7___1.jpg" alt="Mandlezizwe High School — Application Support" class="h-40 w-full object-cover rounded-t-md" loading="lazy" />
+        </picture>
+        <div class="p-4">
+          <div class="text-xs text-slate-500">7 June 2025 · Mandlezizwe High School</div>
+          <h3 class="font-heading font-semibold mt-1">Mandlezizwe High School — Application Support</h3>
+          <p class="mt-2 text-sm">In partnership with LifeLine Pietermaritzburg, we supported 2025 matriculants at Mandlezizwe High School with higher education application processes.</p>
+          <a class="btn-link mt-3 inline-block" href="gallery.html#June 7___1">View gallery</a>
+        </div>
+      </article>
+
+      <article id="cao-copesville-2025-05-20" class="card smooth-transition" data-aos="fade-up" data-aos-delay="160">
+        <picture>
+          <img src="assets/gallery/May 20____1.jpg" alt="CAO Application Drive — Copesville" class="h-40 w-full object-cover rounded-t-md" loading="lazy" />
+        </picture>
+        <div class="p-4">
+          <div class="text-xs text-slate-500">20 May 2025 · Copesville Secondary School</div>
+          <h3 class="font-heading font-semibold mt-1">CAO Application Drive — Copesville</h3>
+          <p class="mt-2 text-sm">We ran a CAO application drive at Copesville Secondary School to assist Grade 12 learners with university/college applications.</p>
+          <a class="btn-link mt-3 inline-block" href="gallery.html#May 20____1">View gallery</a>
+        </div>
+      </article>
+
+      <article id="bhekuximba-career-expo-2025-05-19" class="card smooth-transition" data-aos="fade-up" data-aos-delay="240">
+        <picture>
+          <img src="assets/gallery/May 19 ____1.jpg" alt="Bhekuximba Career Expo" class="h-40 w-full object-cover rounded-t-md" loading="lazy" />
+        </picture>
+        <div class="p-4">
+          <div class="text-xs text-slate-500">19 May 2025 · Bhekuximba High School</div>
+          <h3 class="font-heading font-semibold mt-1">Bhekuximba Career Expo — May 19</h3>
+          <p class="mt-2 text-sm">Career expo with partners including IT Academy, Berea College, Boston College, DUT and more to support learners with information and applications.</p>
+          <a class="btn-link mt-3 inline-block" href="gallery.html#May 19 ____1">View gallery</a>
+        </div>
+      </article>
+
+      <article id="umvuzo-high-school-2025-05-15" class="card smooth-transition" data-aos="fade-up" data-aos-delay="320">
+        <picture>
+          <img src="assets/gallery/May 15 ____1.jpg" alt="Umvuzo High School — May 15" class="h-40 w-full object-cover rounded-t-md" loading="lazy" />
+        </picture>
+        <div class="p-4">
+          <div class="text-xs text-slate-500">15 May 2025 · Umvuzo High School</div>
+          <h3 class="font-heading font-semibold mt-1">Umvuzo High School — Outreach</h3>
+          <p class="mt-2 text-sm">We partnered with local colleges and organizations to support academic excellence and provide application guidance at Umvuzo High School.</p>
+          <a class="btn-link mt-3 inline-block" href="gallery.html#May 15 ____1">View gallery</a>
+        </div>
+      </article>
+      <!-- Static Library recognition card -->
+      <article id="library-services-recognition" class="card smooth-transition" data-aos="fade-up" data-aos-delay="160">
+        <picture>
+          <source srcset="assets/gallery/Library Services Recognition.jpg" type="image/webp" />
+          <img src="assets/gallery/Library Services Recognition.jpg" alt="Library Services Recognition" class="h-40 w-full object-cover rounded-t-md" loading="lazy" />
+        </picture>
+        <div class="p-4">
+          <div class="text-xs text-slate-500">1 October 2025 · Msunduzi Municipality</div>
+          <h3 class="font-heading font-semibold mt-1">Library Services Recognition</h3>
+          <p class="mt-2 text-sm">Empowering Youth was honoured to be recognised by the Msunduzi Municipality for our contribution to library services and youth programmes.</p>
+          <a class="btn-link mt-3 inline-block" href="gallery.html#LibraryServices">View gallery</a>
+        </div>
+      </article>
+    </div>
+
+    <div class="mt-6 text-center" x-show="visibleEvents.length < filtered.length">
+      <button class="btn btn-outline" @click="loadMore()">Load more events</button>
+    </div>
+
+    <!-- Modal -->
+    <div x-show="modal" x-transition class="fixed inset-0 z-50 bg-black/50 flex items-center justify-center p-4" @click.self="modal=false" aria-modal="true" role="dialog">
+      <div class="bg-white rounded-lg max-w-4xl w-full overflow-hidden">
+        <div class="grid grid-cols-1 lg:grid-cols-2">
+          <div class="bg-slate-100">
+            <template x-if="active.images && active.images.length">
+              <div class="p-2">
+                <picture>
+                  <source :srcset="makeWebpSrcset(active.images[activeIndex])" type="image/webp" />
+                  <img :src="active.images[activeIndex]" :srcset="makeSrcset(active.images[activeIndex])" :alt="active.title" class="h-72 w-full object-cover rounded-t-md" />
+                </picture>
+                <div class="mt-2 flex gap-2 overflow-x-auto p-2">
+                  <template x-for="(img, i) in active.images" :key="i">
+                    <img :src="img" @click="activeIndex = i" :class="{'ring-2 ring-accent': i === activeIndex}" class="h-16 w-24 object-cover rounded cursor-pointer border" />
+                  </template>
+                </div>
+                <div class="flex justify-between items-center mt-2 px-2">
+                  <button class="btn btn-outline" @click="prev()">Prev</button>
+                  <button class="btn btn-outline" @click="next()">Next</button>
+                </div>
+              </div>
+            </template>
+            <template x-if="!active.images || !active.images.length">
+              <img :src="active.image" :alt="active.title" class="h-72 w-full object-cover" />
+            </template>
+          </div>
+          <div class="p-6">
+            <h3 class="font-heading text-2xl font-bold" x-text="active.title"></h3>
+            <div class="text-sm text-slate-600 mt-1" x-text="new Date(active.date).toLocaleString() + ' · ' + active.location"></div>
+            <p class="mt-3 text-slate-700" x-text="active.content"></p>
+            <div class="mt-4 flex gap-3">
+              <a href="#signup" class="btn btn-primary" @click="modal=false">Sign up</a>
+              <a :href="active.image || (active.images && active.images[0])" class="btn btn-outline" target="_blank" rel="noopener">Open media</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Signup anchor -->
+    <section id="signup" class="mt-12 p-6 bg-slate-50 rounded-lg border">
+      <h2 class="font-heading text-xl font-semibold">Event Signup</h2>
+      <form name="event-signup" method="POST" data-netlify="true" action="success.html" class="mt-4 grid sm:grid-cols-2 gap-4">
+        <input type="hidden" name="form-name" value="event-signup" />
+        <input class="input" name="full_name" placeholder="Full name" required />
+        <input class="input" type="email" name="email" placeholder="Email" required />
+        <input class="input" name="phone" placeholder="Phone" />
+        <input class="input sm:col-span-2" name="event" placeholder="Event name" />
+        <textarea class="input sm:col-span-2" name="message" placeholder="Message"></textarea>
+        <button class="btn btn-primary sm:col-span-2">Submit</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="bg-ink text-white py-10">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid md:grid-cols-4 gap-8">
+      <div>
+        <img src="EmpoweringYouthLogo.jpg" alt="Empowering Youth logo" class="h-10 w-auto" />
+        <p class="mt-3 text-sm opacity-90">Starling Rd, Eastwood, Pietermaritzburg, South Africa</p>
+        <p class="text-sm opacity-90">Phone: 071 349 7282</p>
+        <p class="text-sm opacity-90">Email: <a href="mailto:empoweringyouthkzn@gmail.com" class="underline">empoweringyouthkzn@gmail.com</a></p>
+        <div class="social-links">
+          <a href="https://web.facebook.com/profile.php?id=100081208311599&sk=photos&_rdc=1&_rdr#" target="_blank"><i class="fab fa-facebook"></i></a>
+          <a href="https://instagram.com/empoweringyouth_" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.tiktok.com/@empowering.youth1" target="_blank"><i class="fab fa-tiktok"></i></a>
+        </div>
+      </div>
+      <div>
+        <h4 class="font-heading font-semibold">Bank Details</h4>
+        <ul class="mt-3 text-sm opacity-90">
+          <li>Standard Bank</li>
+          <li>Empowering Youth NPO</li>
+          <li>Acc: 1018382808</li>
+          <li>MyMoBiz (Current)</li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-heading font-semibold">Newsletter</h4>
+        <form name="newsletter" method="POST" data-netlify="true" action="success.html" class="mt-3 flex gap-2">
+          <input type="hidden" name="form-name" value="newsletter" />
+          <input required aria-label="Email" type="email" name="email" placeholder="Email address" class="flex-1 px-3 py-2 rounded-md text-ink" />
+          <button class="px-4 py-2 rounded-md bg-accent text-ink font-semibold">Sign up</button>
+        </form>
+      </div>
+    </div>
+<a href="https://www.dumatechsolutions.co.za" target="_blank"><div class="mt-8 text-center text-xs opacity-70">© <span id="year"></span> Empowering Youth. All rights reserved. | Powered by Duma Tech Solutions</div></a>
+  </footer>
+
+  <a href="https://wa.me/27713497282" class="fixed bottom-6 right-6 bg-green-500 text-white px-4 py-3 rounded-full shadow-lg fade-in fade-delay-400" target="_blank" rel="noopener">WhatsApp</a>
+  <a href="get-involved.html#donate" class="fixed bottom-6 right-36 bg-accent text-ink px-4 py-3 rounded-full shadow-lg fade-in fade-delay-400">Donate</a>
+  <script>document.getElementById('year').textContent = new Date().getFullYear(); setActiveNav();</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script> if(window.AOS) AOS.init({ once: true, duration: 900, easing: 'ease-out-cubic', offset: 120 }); </script>
+</body>
+</html>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Get Involved — Empowering Youth</title>
+  <link rel="icon" href="EmpoweringYouthLogo.jpg" />
+  <meta name="description" content="Get involved with Empowering Youth — volunteer, partner or donate to support our programmes and events across Pietermaritzburg." />
+  <meta property="og:title" content="Get Involved — Empowering Youth" />
+  <meta property="og:description" content="Volunteer, partner or donate to Empowering Youth and help us reach more young people with education and life-skills programmes." />
+  <link rel="canonical" href="https://empoweringyouth.org.za/get-involved.html" />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/site.prod.css" />
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script defer src="assets/js/site.js"></script>
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js"></script>
+  <script>
+    // Firebase configuration - replace with your actual config from Firebase console
+    const firebaseConfig = {
+      apiKey: "your-api-key",
+      authDomain: "your-project.firebaseapp.com",
+      projectId: "your-project-id",
+      storageBucket: "your-project.appspot.com",
+      messagingSenderId: "123456789",
+      appId: "your-app-id"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+
+    // Function to submit form data to Firebase
+    async function submitToFirebase(event, formName) {
+      event.preventDefault();
+      const form = event.target;
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData.entries());
+      data.timestamp = new Date();
+      data.form = formName;
+      try {
+        await db.collection('form-submissions').add(data);
+        alert('Form submitted successfully!');
+        form.reset();
+      } catch (error) {
+        console.error('Error submitting form:', error);
+        alert('Error submitting form. Please try again.');
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"/>
+</head>
+<body class="font-body text-ink bg-white">
+  <header class="sticky top-0 z-40 bg-white/90 backdrop-blur border-b fade-in fade-delay-100" x-data="{ open:false }">
+    <nav class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+      <div class="flex items-center gap-3">
+        <a href="index.html" class="flex items-center gap-2">
+          <img src="EmpoweringYouthLogo.jpg" alt="Empowering Youth logo" class="h-9 w-auto" />
+          <span class="font-heading font-semibold text-primary hidden sm:inline">Empowering Youth</span>
+        </a>
+      </div>
+      <div class="hidden md:flex items-center gap-6">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="about.html">About</a>
+        <a class="nav-link" href="programs.html">Programs</a>
+        <a class="nav-link" href="events.html">Events</a>
+        <a class="nav-link" href="gallery.html">Gallery</a>
+        <a class="nav-link" href="get-involved.html">Get Involved</a>
+        <a class="nav-link" href="contact.html">Contact</a>
+      </div>
+      <div class="flex items-center gap-3">
+        <a href="get-involved.html#donate" class="hidden md:inline-block px-4 py-2 rounded-md bg-primary text-white">Donate</a>
+        <button type="button" class="md:hidden inline-flex items-center justify-center p-2 rounded-md border border-slate-200" @click="open = !open" aria-label="Toggle navigation">
+          <svg x-show="!open" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16" /></svg>
+          <svg x-show="open" x-cloak xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12" /></svg>
+        </button>
+      </div>
+    </nav>
+    <div class="md:hidden border-t bg-white" x-show="open" x-transition.origin.top.left x-cloak>
+      <div class="mx-auto max-w-7xl px-4 py-3 space-y-2">
+        <a class="block nav-link" href="index.html">Home</a>
+        <a class="block nav-link" href="about.html">About</a>
+        <a class="block nav-link" href="programs.html">Programs</a>
+        <a class="block nav-link" href="events.html">Events</a>
+        <a class="block nav-link" href="gallery.html">Gallery</a>
+        <a class="block nav-link" href="get-involved.html">Get Involved</a>
+        <a class="block nav-link" href="contact.html">Contact</a>
+        <a href="get-involved.html#donate" class="btn btn-primary w-full mt-2">Donate</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
+    <h1 class="font-heading text-3xl md:text-4xl font-bold" data-aos="fade-up">Get Involved</h1>
+
+    <section id="volunteer" class="mt-8 p-6 bg-slate-50 rounded-lg border" data-aos="fade-up" data-aos-delay="120">
+      <h2 class="font-heading text-xl font-semibold">Volunteer Signup</h2>
+      <form name="volunteer" method="POST" data-netlify="true" action="success.html" onsubmit="submitToFirebase(event, 'volunteer')" class="mt-4 grid sm:grid-cols-2 gap-4">
+        <input type="hidden" name="form-name" value="volunteer" />
+        <input class="input" name="full_name" placeholder="Full name" required />
+        <input class="input" type="email" name="email" placeholder="Email" required />
+        <input class="input" name="phone" placeholder="Phone" />
+        <input class="input" name="location" placeholder="Location" />
+        <fieldset class="sm:col-span-2">
+          <legend class="text-sm font-semibold">Areas of interest</legend>
+          <div class="mt-2 grid grid-cols-2 gap-2 text-sm">
+            <label><input type="checkbox" name="interest" value="Education" /> Education</label>
+            <label><input type="checkbox" name="interest" value="Health" /> Health</label>
+            <label><input type="checkbox" name="interest" value="Civic" /> Civic</label>
+            <label><input type="checkbox" name="interest" value="Sports" /> Sports</label>
+          </div>
+        </fieldset>
+        <input class="input" name="availability" placeholder="Availability" />
+        <textarea class="input sm:col-span-2" name="message" placeholder="Message"></textarea>
+        <button class="btn btn-primary sm:col-span-2">Submit</button>
+      </form>
+    </section>
+
+    <section id="donate" class="mt-8 p-6 bg-white rounded-lg border" data-aos="fade-up" data-aos-delay="160">
+      <h2 class="font-heading text-xl font-semibold">Donation / Payments</h2>
+      <p class="mt-2 text-sm">Support Empowering Youth. Use EFT with the bank details below or contact us for payment links.</p>
+      <ul class="mt-3 text-sm">
+        <li><strong>Bank:</strong> Standard Bank</li>
+        <li><strong>Account Name:</strong> Empowering Youth NPO</li>
+        <li><strong>Account Number:</strong> 1018382808</li>
+        <li><strong>Account Type:</strong> MyMoBiz (Current Account)</li>
+      </ul>
+      <div class="mt-3 p-3 bg-slate-50 rounded">Priority Application Service — R150 for fast-tracked applications outside KZN.</div>
+      <div class="mt-3 flex gap-3">
+        <a class="btn btn-outline" href="https://wa.me/27713497282" target="_blank" rel="noopener">WhatsApp Admin</a>
+      </div>
+    </section>
+
+    <section id="partner" class="mt-8 p-6 bg-slate-50 rounded-lg border" data-aos="fade-up" data-aos-delay="200">
+      <h2 class="font-heading text-xl font-semibold">Partner With Us</h2>
+      <form name="partner" method="POST" data-netlify="true" action="success.html" onsubmit="submitToFirebase(event, 'partner')" class="mt-4 grid sm:grid-cols-2 gap-4">
+        <input type="hidden" name="form-name" value="partner" />
+        <input class="input" name="org_name" placeholder="Organization name" required />
+        <input class="input" name="contact_person" placeholder="Contact person" required />
+        <input class="input" type="email" name="email" placeholder="Email" required />
+        <input class="input" name="idea" placeholder="Partnership idea" />
+        <textarea class="input sm:col-span-2" name="message" placeholder="Message"></textarea>
+        <button class="btn btn-primary sm:col-span-2">Submit</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="bg-ink text-white py-10" data-aos="fade-up" data-aos-delay="280">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid md:grid-cols-4 gap-8">
+      <div>
+        <img src="EmpoweringYouthLogo.jpg" alt="Empowering Youth logo" class="h-10 w-auto" />
+        <p class="mt-3 text-sm opacity-90">Starling Rd, Eastwood, Pietermaritzburg, 3201, South Africa</p>
+        <p class="text-sm opacity-90">Phone: 071 349 7282</p>
+        <p class="text-sm opacity-90">Email: <a href="mailto:empoweringyouthkzn@gmail.com" class="underline">empoweringyouthkzn@gmail.com</a></p>
+        <div class="social-links">
+          <a href="https://web.facebook.com/profile.php?id=100081208311599&sk=photos&_rdc=1&_rdr#" target="_blank"><i class="fab fa-facebook"></i></a>
+          <a href="https://instagram.com/empoweringyouth_" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.tiktok.com/@empowering.youth1" target="_blank"><i class="fab fa-tiktok"></i></a>
+        </div>
+      </div>
+      <div>
+        <h4 class="font-heading font-semibold">Quick Links</h4>
+        <ul class="mt-3 space-y-2 text-sm">
+          <li><a href="about.html" class="hover:underline">About</a></li>
+          <li><a href="programs.html" class="hover:underline">Programs</a></li>
+          <li><a href="events.html" class="hover:underline">Events</a></li>
+          <li><a href="get-involved.html" class="hover:underline">Get Involved</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-heading font-semibold">Bank Details</h4>
+        <ul class="mt-3 text-sm opacity-90">
+          <li>Standard Bank</li>
+          <li>Empowering Youth NPO</li>
+          <li>Acc: 1018382808</li>
+          <li>MyMoBiz (Current)</li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-heading font-semibold">Newsletter</h4>
+        <form name="newsletter" method="POST" data-netlify="true" action="success.html" onsubmit="submitToFirebase(event, 'newsletter')" class="mt-3 flex gap-2">
+          <input type="hidden" name="form-name" value="newsletter" />
+          <input required aria-label="Email" type="email" name="email" placeholder="Email address" class="flex-1 px-3 py-2 rounded-md text-ink" />
+          <button class="px-4 py-2 rounded-md bg-accent text-ink font-semibold">Sign up</button>
+        </form>
+      </div>
+    </div>
+      <a href="https://www.dumatechsolutions.co.za" target="_blank"><div class="mt-8 text-center text-xs opacity-70">© <span id="year"></span> Empowering Youth. All rights reserved. | Powered by Duma Tech Solutions</div></a>
+  </footer>
+        
+  <a href="https://wa.me/27713497282" class="fixed bottom-6 right-6 bg-green-500 text-white px-4 py-3 rounded-full shadow-lg fade-in fade-delay-400" target="_blank" rel="noopener">WhatsApp</a>
+  <a href="#donate" class="fixed bottom-6 right-36 bg-accent text-ink px-4 py-3 rounded-full shadow-lg fade-in fade-delay-400">Donate</a>
+  <script>document.getElementById('year').textContent = new Date().getFullYear(); setActiveNav();</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script> if(window.AOS) AOS.init({ once: true, duration: 700, easing: 'ease-out-cubic' }); </script>
+</body>
+</html>

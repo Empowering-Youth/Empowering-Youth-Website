@@ -1,0 +1,70 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "assets/gallery"
+public_folder: "/assets/gallery"
+
+collections:
+  - name: "news"
+    label: "News & Announcements"
+    folder: "data"
+    create: true
+    extension: json
+    format: json
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Date", name: "date", widget: "datetime"}
+      - {label: "Excerpt", name: "excerpt", widget: "text"}
+      - {label: "Content", name: "content", widget: "markdown"}
+      - {label: "Slug", name: "slug", widget: "string"}
+
+  - name: "events"
+    label: "Events"
+    folder: "data"
+    create: true
+    extension: json
+    format: json
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Date", name: "date", widget: "datetime"}
+      - {label: "Location", name: "location", widget: "string"}
+      - {label: "Excerpt", name: "excerpt", widget: "text"}
+      - {label: "Content", name: "content", widget: "markdown"}
+      - {label: "Slug", name: "slug", widget: "string"}
+      - {label: "Images", name: "images", widget: "list", field: {label: "Image", name: "image", widget: "image"}}
+
+  - name: "programs"
+    label: "Programs"
+    folder: "data"
+    create: true
+    extension: json
+    format: json
+    slug: "{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Excerpt", name: "excerpt", widget: "text"}
+      - {label: "Content", name: "content", widget: "markdown"}
+      - {label: "Slug", name: "slug", widget: "string"}
+      - {label: "Image", name: "image", widget: "image"}
+      - {label: "Image Srcset", name: "imageSrcset", widget: "string"}
+
+  - name: "testimonials"
+    label: "Testimonials"
+    folder: "data"
+    create: true
+    extension: json
+    format: json
+    fields:
+      - {label: "Quote", name: "quote", widget: "text"}
+      - {label: "Author", name: "author", widget: "string"}
+
+  - name: "gallery"
+    label: "Gallery Images"
+    folder: "assets/gallery"
+    create: true
+    fields:
+      - {label: "Image", name: "image", widget: "image"}
+      - {label: "Alt Text", name: "alt", widget: "string"}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Thank you — Empowering Youth</title>
+  <meta name="description" content="Thank you — your form submission to Empowering Youth was received. We'll be in touch." />
+  <meta property="og:title" content="Thank you — Empowering Youth" />
+  <meta property="og:description" content="Thank you — your submission was received by Empowering Youth." />
+  <link rel="canonical" href="https://empoweringyouth.org.za/success.html" />
+  <link rel="stylesheet" href="assets/css/site.prod.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"/>
+</head>
+<body class="font-body text-ink bg-white">
+  <header class="sticky top-0 z-40 bg-white/90 backdrop-blur border-b fade-in fade-delay-100" x-data="{ open:false }">
+    <nav class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+      <div class="flex items-center gap-3">
+        <a href="index.html" class="flex items-center gap-2">
+          <img src="EmpoweringYouthLogo.jpg" alt="Empowering Youth logo" class="h-9 w-auto" />
+          <span class="font-heading font-semibold text-primary hidden sm:inline">Empowering Youth</span>
+        </a>
+      </div>
+      <div class="hidden md:flex items-center gap-6">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="about.html">About</a>
+        <a class="nav-link" href="programs.html">Programs</a>
+        <a class="nav-link" href="events.html">Events</a>
+        <a class="nav-link" href="gallery.html">Gallery</a>
+        <a class="nav-link" href="get-involved.html">Get Involved</a>
+        <a class="nav-link" href="contact.html">Contact</a>
+      </div>
+      <div class="flex items-center gap-3">
+        <a href="get-involved.html#donate" class="hidden md:inline-block px-4 py-2 rounded-md bg-primary text-white">Donate</a>
+        <button type="button" class="md:hidden inline-flex items-center justify-center p-2 rounded-md border border-slate-200" @click="open = !open" aria-label="Toggle navigation">
+          <svg x-show="!open" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16" /></svg>
+          <svg x-show="open" x-cloak xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12" /></svg>
+        </button>
+      </div>
+    </nav>
+    <div class="md:hidden border-t bg-white" x-show="open" x-transition.origin.top.left x-cloak>
+      <div class="mx-auto max-w-7xl px-4 py-3 space-y-2">
+        <a class="block nav-link" href="index.html">Home</a>
+        <a class="block nav-link" href="about.html">About</a>
+        <a class="block nav-link" href="programs.html">Programs</a>
+        <a class="block nav-link" href="events.html">Events</a>
+        <a class="block nav-link" href="gallery.html">Gallery</a>
+        <a class="block nav-link" href="get-involved.html">Get Involved</a>
+        <a class="block nav-link" href="contact.html">Contact</a>
+        <a href="get-involved.html#donate" class="btn btn-primary w-full mt-2">Donate</a>
+      </div>
+    </div>
+  </header>
+  <main class="min-h-screen flex items-center justify-center p-6">
+    <div class="max-w-md w-full p-8 rounded-lg border shadow-sm text-center">
+      <h1 class="font-heading text-2xl font-bold" data-aos="fade-up">Thank you!</h1>
+      <p class="mt-2 text-slate-700" data-aos="fade-up" data-aos-delay="80">Your submission was received. We'll get back to you soon.</p>
+      <div class="mt-6 flex flex-col gap-2">
+        <a class="btn btn-primary" href="index.html">Back to Home</a>
+        <a class="btn btn-accent" href="events.html">See Events</a>
+      </div>
+    </div>
+  </main>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script> if(window.AOS) AOS.init({ once: true, duration: 900, easing: 'ease-out-cubic', offset: 120 }); </script>
+</body>
+</html>

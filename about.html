@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About — Empowering Youth</title>
+  <link rel="icon" href="EmpoweringYouthLogo.jpg" />
+  <meta name="description" content="About Empowering Youth — NPO in Pietermaritzburg providing education support, life skills, career expos and community programs." />
+  <meta property="og:title" content="About — Empowering Youth" />
+  <meta property="og:description" content="Learn about Empowering Youth, our mission, vision and programs supporting learners across Pietermaritzburg." />
+  <link rel="canonical" href="https://empoweringyouth.org.za/about.html" />
+  <link rel="stylesheet" href="assets/css/site.prod.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script defer src="assets/js/site.js"></script>
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js"></script>
+  <script>
+    // Firebase configuration - replace with your actual config from Firebase console
+    const firebaseConfig = {
+      apiKey: "your-api-key",
+      authDomain: "your-project.firebaseapp.com",
+      projectId: "your-project-id",
+      storageBucket: "your-project.appspot.com",
+      messagingSenderId: "123456789",
+      appId: "your-app-id"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+
+    // Function to submit form data to Firebase
+    async function submitToFirebase(event, formName) {
+      event.preventDefault();
+      const form = event.target;
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData.entries());
+      data.timestamp = new Date();
+      data.form = formName;
+      try {
+        await db.collection('form-submissions').add(data);
+        alert('Form submitted successfully!');
+        form.reset();
+      } catch (error) {
+        console.error('Error submitting form:', error);
+        alert('Error submitting form. Please try again.');
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"/>
+</head>
+<body class="font-body text-ink bg-white">
+  <header class="sticky top-0 z-40 bg-white/90 backdrop-blur border-b fade-in fade-delay-100" x-data="{ open:false }">
+    <nav class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+      <div class="flex items-center gap-3">
+        <a href="index.html" class="flex items-center gap-2">
+          <img src="EmpoweringYouthLogo.jpg" alt="Empowering Youth logo" class="h-9 w-auto" />
+          <span class="font-heading font-semibold text-primary hidden sm:inline">Empowering Youth</span>
+        </a>
+      </div>
+      <div class="hidden md:flex items-center gap-6">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="about.html">About</a>
+        <a class="nav-link" href="programs.html">Programs</a>
+        <a class="nav-link" href="events.html">Events</a>
+        <a class="nav-link" href="gallery.html">Gallery</a>
+        <a class="nav-link" href="get-involved.html">Get Involved</a>
+        <a class="nav-link" href="contact.html">Contact</a>
+      </div>
+      <div class="flex items-center gap-3">
+        <a href="get-involved.html#donate" class="hidden md:inline-block px-4 py-2 rounded-md bg-primary text-white">Donate</a>
+        <button type="button" class="md:hidden inline-flex items-center justify-center p-2 rounded-md border border-slate-200" @click="open = !open" aria-label="Toggle navigation">
+          <svg x-show="!open" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16" /></svg>
+          <svg x-show="open" x-cloak xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12" /></svg>
+        </button>
+      </div>
+    </nav>
+    <div class="md:hidden border-t bg-white" x-show="open" x-transition.origin.top.left x-cloak>
+      <div class="mx-auto max-w-7xl px-4 py-3 space-y-2">
+        <a class="block nav-link" href="index.html">Home</a>
+        <a class="block nav-link" href="about.html">About</a>
+        <a class="block nav-link" href="programs.html">Programs</a>
+        <a class="block nav-link" href="events.html">Events</a>
+        <a class="block nav-link" href="gallery.html">Gallery</a>
+        <a class="block nav-link" href="get-involved.html">Get Involved</a>
+        <a class="block nav-link" href="contact.html">Contact</a>
+        <a href="get-involved.html#donate" class="btn btn-primary w-full mt-2">Donate</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
+    <h1 class="font-heading text-3xl md:text-4xl font-bold" data-aos="fade-up">About Empowering Youth</h1>
+    <p class="mt-3 max-w-3xl text-slate-700" data-aos="fade-up" data-aos-delay="80">Empowering Youth is a registered non-profit organisation (NPO: 242-292) based in Pietermaritzburg. We are committed to empowering young people from disadvantaged communities by providing access to education, skills development, health information, leadership support, and opportunities for personal growth.</p>
+    <p class="mt-3 max-w-3xl text-slate-700">Empowering Youth is a registered non-profit organisation (NPO: 242-292) based in Pietermaritzburg. We are committed to empowering young people from disadvantaged communities by providing access to education, skills development, health information, leadership support, and opportunities for personal growth.</p>
+
+    <div class="mt-8 grid lg:grid-cols-3 gap-10 items-start">
+      <div class="lg:col-span-2 space-y-8">
+        <section data-aos="fade-up" data-aos-delay="120">
+          <h2 class="font-heading text-2xl font-semibold">Who We Serve</h2>
+          <p class="mt-2 text-slate-700">Rooted in the realities of semi-rural, rural, and urban communities surrounding Pietermaritzburg, we work directly with youth who face daily challenges such as poverty, unemployment, gender-based violence, substance abuse, and limited access to quality education. Empowering Youth exists to address these inequalities, offering programmes that build resilience, confidence, and long-term opportunities for young people.</p>
+        </section>
+
+        <section data-aos="fade-up" data-aos-delay="160">
+          <h2 class="font-heading text-2xl font-semibold">Our Vision</h2>
+          <p class="mt-2 text-slate-700">Empowering Youth envisions, that the youth the youth of Umgungundlovu Disctrict can take control of their own lives and make informed decisions that enhance sustainability and well being.</p>
+        </section>
+
+        <section data-aos="fade-up" data-aos-delay="200">
+          <h2 class="font-heading text-2xl font-semibold">Our Mission</h2>
+          <p class="mt-2 text-slate-700">To deliver high-impact, youth-centred programmes that promote education, leadership development, health awareness, personal empowerment, and social justice—enabling young people to become active contributors in their communities and the broader society.</p>
+        </section>
+
+        <section data-aos="fade-up" data-aos-delay="240">
+          <h2 class="font-heading text-2xl font-semibold">Our Core Values</h2>
+          <p class="mt-2 font-semibold text-primary">Develop - Connect - Support</p>
+          <ul class="mt-3 space-y-1 text-slate-700 text-sm list-disc pl-5">
+            <li><strong>Integrity:</strong> We act with honesty, responsibility, and transparency.</li>
+            <li><strong>Youth-Centred Development:</strong> Young people are at the heart of everything we do.</li>
+            <li><strong>Inclusivity:</strong> We create spaces where all young people feel valued and supported.</li>
+            <li><strong>Social Justice:</strong> We promote fairness, equity, and human rights in all our work.</li>
+            <li><strong>Community Participation:</strong> We work hand-in-hand with communities to identify needs and create solutions.</li>
+            <li><strong>Accountability:</strong> We commit to responsible leadership, ethical governance, and efficient resource management.</li>
+          </ul>
+        </section>
+
+        <section x-data="timeline()" x-init="load()" data-aos="fade-up" data-aos-delay="280">
+          <h2 class="font-heading text-2xl font-semibold">Our Journey</h2>
+          <div class="mt-4 border-l-2 border-slate-200 pl-6 space-y-6">
+            <template x-for="m in items" :key="m.date">
+              <div>
+                <div class="text-xs text-slate-500" x-text="m.date"></div>
+                <h3 class="font-semibold" x-text="m.title"></h3>
+                <p class="text-sm" x-text="m.excerpt"></p>
+              </div>
+            </template>
+          </div>
+        </section>
+
+        <section data-aos="fade-up" data-aos-delay="320">
+          <h2 class="font-heading text-2xl font-semibold">Community Context</h2>
+          <p class="mt-2 text-slate-700">Empowering Youth serves communities grappling with high unemployment, poverty, crime, drug abuse, and limited access to essential services. Many households have young people who lack role models, guidance, or safe spaces to learn and grow. By providing mentorship, training, and support, we help bridge the gap between young people’s potential and their opportunities.</p>
+        </section>
+
+        <section data-aos="fade-up" data-aos-delay="360">
+          <h2 class="font-heading text-2xl font-semibold">Leadership & Background</h2>
+          <p class="mt-2 text-slate-700">Empowering Youth emerged from Source of Hope, a community-driven movement founded on the belief that local leadership can transform communities. Our team includes passionate activists and experienced community developers, committed to walking alongside young people as they shape their futures.</p>
+        </section>
+      </div>
+      <aside class="space-y-4">
+        <div class="p-4 bg-slate-50 rounded-lg border">
+          <h3 class="font-heading font-semibold">Registered Non-Profit</h3>
+          <p class="mt-2 text-sm text-slate-700">Empowering Youth is registered in terms of the Non-Profit Organisations Act, 1997 (NPO: 242-292).</p>
+        </div>
+
+        <div class="p-4 bg-slate-50 rounded-lg border mt-4">
+          <h3 class="font-heading font-semibold">Partners & Supporters</h3>
+          <ul class="mt-3 space-y-2 text-sm" x-data="partnersList()" x-init="load()">
+            <template x-for="p in partners" :key="p.name">
+              <li class="flex items-center gap-2">
+                <img :src="p.logo" :alt="p.name" class="h-6 w-auto" loading="lazy" />
+                <span x-text="p.name"></span>
+              </li>
+            </template>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="bg-ink text-white py-10">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid md:grid-cols-4 gap-8">
+      <div>
+        <img src="EmpoweringYouthLogo.jpg" alt="Empowering Youth logo" class="h-10 w-auto" />
+        <p class="mt-3 text-sm opacity-90">Starling Rd, Eastwood, Pietermaritzburg, South Africa</p>
+        <p class="text-sm opacity-90">Phone: 071 349 7282</p>
+        <p class="text-sm opacity-90">Email: <a href="mailto:empoweringyouthkzn@gmail.com" class="underline">empoweringyouthkzn@gmail.com</a></p>
+        <div class="social-links">
+          <a href="https://web.facebook.com/profile.php?id=100081208311599&sk=photos&_rdc=1&_rdr#" target="_blank"><i class="fab fa-facebook"></i></a>
+          <a href="https://instagram.com/empoweringyouth_" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.tiktok.com/@empowering.youth1" target="_blank"><i class="fab fa-tiktok"></i></a>
+        </div>
+      </div>
+      <div>
+        <h4 class="font-heading font-semibold">Bank Details</h4>
+        <ul class="mt-3 text-sm opacity-90">
+          <li>Standard Bank</li>
+          <li>Empowering Youth NPO</li>
+          <li>Acc: 1018382808</li>
+          <li>MyMoBiz (Current)</li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-heading font-semibold">Newsletter</h4>
+        <form name="newsletter" method="POST" data-netlify="true" action="success.html" onsubmit="submitToFirebase(event, 'newsletter')" class="mt-3 flex gap-2">
+          <input type="hidden" name="form-name" value="newsletter" />
+          <input required aria-label="Email" type="email" name="email" placeholder="Email address" class="flex-1 px-3 py-2 rounded-md text-ink" />
+          <button class="px-4 py-2 rounded-md bg-accent text-ink font-semibold">Sign up</button>
+        </form>
+      </div>
+    </div>
+<a href="https://www.dumatechsolutions.co.za" target="_blank"><div class="mt-8 text-center text-xs opacity-70">© <span id="year"></span> Empowering Youth. All rights reserved. | Powered by Duma Tech Solutions</div></a>
+  </footer>
+
+  <a href="https://wa.me/27713497282" class="fixed bottom-6 right-6 bg-green-500 text-white px-4 py-3 rounded-full shadow-lg fade-in fade-delay-400" target="_blank" rel="noopener">WhatsApp</a>
+  <a href="get-involved.html#donate" class="fixed bottom-6 right-36 bg-accent text-ink px-4 py-3 rounded-full shadow-lg fade-in fade-delay-400">Donate</a>
+  <script>document.getElementById('year').textContent = new Date().getFullYear(); setActiveNav();</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script> if(window.AOS) AOS.init({ once: true, duration: 700, easing: 'ease-out-cubic' }); </script>
+</body>
+</html>

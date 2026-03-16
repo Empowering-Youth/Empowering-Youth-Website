@@ -1,0 +1,51 @@
+[
+  {
+    "title": "Higher Education Support",
+    "slug": "higher-education-support",
+    "image": "https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=1600&auto=format&fit=crop",
+    "excerpt": "NSFAS/CAO/TVET application drives and priority assistance.",
+    "content": "We run application drives, document checks, and guidance for NSFAS, CAO and TVET. Priority Application Service available for R150 outside KZN."
+  },
+  {
+    "title": "Mental Health & Life Skills",
+    "slug": "mental-health-life-skills",
+    "image": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1600&auto=format&fit=crop",
+    "excerpt": "Psychosocial support and life-skills workshops with partners.",
+    "content": "We partner with organizations like Funda to deliver psychosocial support, resilience building and life-skills programs."
+  },
+  {
+    "title": "Financial Literacy",
+    "slug": "financial-literacy",
+    "image": "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=1600&auto=format&fit=crop",
+    "excerpt": "Avocado Vision partnership with certificates for youth.",
+    "content": "Youth receive practical budgeting, saving and entrepreneurship training, with certificates issued in partnership with Avocado Vision."
+  },
+  {
+    "title": "Career Expos & Partnerships",
+    "slug": "career-expos-partnerships",
+    "image": "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1600&auto=format&fit=crop",
+    "excerpt": "School outreach and expos with DUT, Berea, Boston, Rosebank and more.",
+    "content": "We host expos and outreach with universities and colleges such as DUT, Berea, Boston College, Rosebank, and IT Academy."
+  },
+  {
+    "title": "Youth Sports & Team Building",
+    "slug": "youth-sports-team-building",
+    "image": "https://images.unsplash.com/photo-1549921296-3ecf1220d095?q=80&w=1600&auto=format&fit=crop",
+    "excerpt": "Sporting events and team-building for healthy lifestyles.",
+    "content": "We use sport to build teamwork, leadership and wellbeing among young people."
+  },
+  {
+    "title": "Civic Engagement & Dialogues",
+    "slug": "civic-engagement-dialogues",
+    "image": "https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=1600&auto=format&fit=crop",
+    "excerpt": "IEC sessions and youth dialogues for active citizenship.",
+    "content": "We run dialogues and sessions with IEC and partners to encourage youth participation in democracy."
+  }
+  ,{
+    "title": "Library Services Recognition",
+    "slug": "library-services-recognition",
+    "image": "assets/gallery/Library Services Recognition.jpg",
+    "excerpt": "Recognition by Msunduzi Municipality for contributions to library services and youth programmes.",
+    "content": "Empowering Youth was deeply honoured to be invited and recognised by the Msunduzi Municipality - City of Choice as one of the committed stakeholders contributing to the success of the Umsunduzi Municipality Library Services’ events and programmes. This recognition reflects the hard work, dedication and passion of our team in serving young people and the broader community. Over the years we have worked closely with the Library Services department, offering our time, skills, resources and energy to support initiatives that promote education, literacy, youth development and community empowerment. We are grateful for this acknowledgement and proud to stand alongside other organisations and leaders who are equally committed to creating positive change."
+  }
+]

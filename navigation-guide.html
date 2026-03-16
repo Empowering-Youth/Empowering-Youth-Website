@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Website Navigation Guide — Empowering Youth</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/site.prod.css" />
+  <link rel="icon" href="favicon.ico" />
+</head>
+<body class="font-sans text-slate-900 bg-slate-50 min-h-screen py-12 px-4">
+  <main class="max-w-4xl mx-auto">
+    <div class="text-center mb-12">
+      <img src="EmpoweringYouthLogo.jpg" alt="Empowering Youth" class="h-20 mx-auto mb-4">
+      <h1 class="font-bold text-4xl text-primary mb-4">Website Navigation Guide</h1>
+      <p class="text-xl text-slate-600 max-w-2xl mx-auto">A simple guide for navigating the Empowering Youth website. For client use and maintenance reference.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8">
+      <div class="bg-white p-8 rounded-xl shadow-lg">
+        <h2 class="font-bold text-2xl mb-6 text-ink">Main Navigation</h2>
+        <ul class="space-y-4 text-lg">
+          <li><a href="index.html" class="text-primary font-semibold hover:underline">🏠 Home</a> - Overview, latest announcements, featured programs</li>
+          <li><a href="about.html" class="text-primary font-semibold hover:underline">About</a> - Mission, vision, our journey, leadership</li>
+          <li><a href="programs.html" class="text-primary font-semibold hover:underline">Programs</a> - All initiatives and services</li>
+          <li><a href="events.html" class="text-primary font-semibold hover:underline">Events</a> - Latest news and upcoming events</li>
+          <li><a href="gallery.html" class="text-primary font-semibold hover:underline">Gallery</a> - Photos and videos from activities</li>
+          <li><a href="get-involved.html" class="text-primary font-semibold hover:underline">Get Involved</a> - Volunteer, donate, partner forms</li>
+          <li><a href="contact.html" class="text-primary font-semibold hover:underline">Contact</a> - Location, phone, email, form</li>
+        </ul>
+      </div>
+
+      <div class="space-y-6">
+        <div class="bg-gradient-to-r from-primary to-secondary p-8 rounded-xl text-white shadow-lg">
+          <h2 class="font-bold text-2xl mb-4">Key Features</h2>
+          <ul class="space-y-3 text-lg">
+            <li>✅ Dynamic content from JSON files (events, news, programs)</li>
+            <li>✅ Image-optimized (responsive srcset, lazy loading)</li>
+            <li>✅ Mobile-responsive design</li>
+            <li>✅ Netlify forms (contact, volunteer, newsletter)</li>
+            <li>✅ Social media links in footer (Facebook, Instagram, TikTok)</li>
+            <li>✅ WhatsApp & Donate floating buttons</li>
+          </ul>
+        </div>
+
+        <div class="bg-white p-8 rounded-xl shadow-lg">
+          <h2 class="font-bold text-2xl mb-4 text-ink">Adding Latest Announcements (Home Page)</h2>
+          <p class="text-slate-600 mb-4">Edit <code>data/news.json</code>, add new entry:</p>
+          <pre class="bg-slate-100 p-4 rounded text-sm overflow-x-auto font-mono">{
+  "title": "New Event",
+  "slug": "new-event",
+  "date": "2025-01-01T09:00:00+02:00",
+  "excerpt": "Short description...",
+  "image": "assets/gallery/new-image.jpg"
+}</pre>
+          <p class="text-sm text-slate-600 mt-2">Images auto-display on home page. Link to events.html#slug</p>
+        </div>
+
+        <div class="bg-amber-50 border border-amber-200 p-6 rounded-xl">
+          <h3 class="font-bold text-lg mb-2">Maintenance Notes</h3>
+          <ul class="text-sm space-y-1">
+            <li>• Upload new gallery images to <code>assets/gallery/</code></li>
+            <li>• Continuous updates handled by Duma Tech Solutions</li>
+            <li>• Powered by Duma Tech Solutions in footer</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-12 text-center">
+      <p class="text-slate-600 text-lg">Questions? Contact <a href="mailto:empoweringyouthkzn@gmail.com" class="text-primary underline">empoweringyouthkzn@gmail.com</a> or WhatsApp <a href="https://wa.me/27713497282" class="text-primary underline">071 349 7282</a></p>
+      <p class="mt-2 text-xs opacity-75">© 2026 Empowering Youth | Powered by Duma Tech Solutions</p>
+    </div>
+  </main>
+</body>
+</html>

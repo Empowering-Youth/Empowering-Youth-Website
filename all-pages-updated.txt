@@ -1,0 +1,18 @@
+Summary of updates:
+
+Icons: Font Awesome CDN added to all HTML heads:
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css'>
+
+Footer social div changed to:
+<div class='social-links flex gap-3'>
+  <a href='FB URL' target='_blank'><i class='fab fa-facebook text-blue-600 hover:scale-110 transition'></i></a>
+  <a href='IG URL' target='_blank'><i class='fab fa-instagram text-pink-600 hover:scale-110 transition'></i></a>
+  <a href='TikTok URL' target='_blank'><i class='fab fa-tiktok text-black hover:scale-110 transition'></i></a>
+</div>
+
+Gallery: All <img> wrapped in <a href='src' download target='_blank' rel='noopener'>
+Videos already linkable.
+
+Updated files: all HTML pages, site.css (social-links styles).
+
+Tested: Icons Font Awesome modern, gallery all clickable/downloadable.
