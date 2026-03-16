@@ -82,8 +82,16 @@
         <a class="nav-link" href="events.html">Events</a>
         <a class="nav-link" href="gallery.html">Gallery</a>
         <a class="nav-link" href="get-involved.html">Get Involved</a>
-
-      </nav>
+        <a class="nav-link" href="contact.html">Contact</a>
+      </div>
+      <div class="flex items-center gap-3">
+        <a href="get-involved.html#donate" class="hidden md:inline-block px-4 py-2 rounded-md bg-primary text-white">Donate</a>
+        <button type="button" class="md:hidden inline-flex items-center justify-center p-2 rounded-md border border-slate-200 bg-white shadow" @click="open = !open" aria-label="Toggle navigation">
+          <svg x-show="!open" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16" /></svg>
+          <svg x-show="open" x-cloak xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12" /></svg>
+        </button>
+      </div>
+    </nav>
     <div class="md:hidden border-t bg-white" x-show="open" x-transition.origin.top.left x-cloak>
       <div class="mx-auto max-w-7xl px-4 py-3 space-y-2">
         <a class="block nav-link" href="index.html">Home</a>
@@ -132,24 +140,21 @@
       </div>
     </div>
 
-    <!-- Marquee (simple JS animation with fade) -->
-    <div id="marquee" class="py-2 bg-primary text-white text-center overflow-hidden">
-      <div id="marquee-text" class="inline-block whitespace-nowrap transition-opacity duration-1000">Empowering Youth is registered in terms of the Non-Profit Organisations Act, 1997 (NPO: 242-292).</div>
+    <!-- Marquee (simple JS animation, faster speed, with background and hover) -->
+    <div id="marquee" class="py-2 bg-primary text-white text-center overflow-hidden hover:bg-blue-600 transition-colors duration-300 cursor-pointer">
+      <div id="marquee-text" class="inline-block whitespace-nowrap" style="will-change: transform;">Empowering Youth is registered in terms of the Non-Profit Organisations Act, 1997 (NPO: 242-292).</div>
     </div>
     <script>
       const marqueeText = document.getElementById('marquee-text');
-      let position = 100;
-      let opacity = 1;
-      setInterval(() => {
-        position -= 0.5;
-        if (position < -marqueeText.offsetWidth) {
-          position = 100;
-          opacity = 0;
-          setTimeout(() => { opacity = 1; marqueeText.style.opacity = opacity; }, 500);
-        }
-        marqueeText.style.transform = `translateX(${position}%)`;
-        marqueeText.style.opacity = opacity;
-      }, 30);
+      const marquee = document.getElementById('marquee');
+      let x = marquee.offsetWidth;
+      function animateMarquee() {
+        x -= 2; // Move 2px per frame for faster speed
+        if (x < -marqueeText.offsetWidth) x = marquee.offsetWidth;
+        marqueeText.style.transform = `translateX(${x}px)`;
+        requestAnimationFrame(animateMarquee);
+      }
+      animateMarquee();
     </script>
   </section>
 

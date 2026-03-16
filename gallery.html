@@ -74,9 +74,6 @@
         <a href="assets/gallery/Centocow_5.jpg" download><img src="assets/gallery/Centocow_5.jpg" alt="Centocow" class="w-full h-48 object-cover rounded-lg" loading="lazy" /></a>
         <a href="assets/gallery/Centocow_6.jpg" download><img src="assets/gallery/Centocow_6.jpg" alt="Centocow" class="w-full h-48 object-cover rounded-lg" loading="lazy" /></a>
       </div>
-      <div class="mt-3">
-        <a class="btn btn-outline" href="assets/gallery/Centocow.jpg" download>Download images</a>
-      </div>
     </section>
 
     <section id="Sweetwater" class="mt-10">
@@ -106,11 +103,6 @@
         <a href="assets/gallery/Sweetwater (21).jpg" download><img src="assets/gallery/Sweetwater (21).jpg" alt="Sweetwater" class="w-full h-48 object-cover rounded-lg" loading="lazy" /></a>
         <a href="assets/gallery/Sweetwater (22).jpg" download><img src="assets/gallery/Sweetwater (22).jpg" alt="Sweetwater" class="w-full h-48 object-cover rounded-lg" loading="lazy" /></a>
         <a href="assets/gallery/Sweetwater Main.jpg" download><img src="assets/gallery/Sweetwater Main.jpg" alt="Sweetwater main" class="w-full h-48 object-cover rounded-lg" loading="lazy" /></a>
-        <!-- Video (link opens in new tab) -->
-        <a href="assets/gallery/Sweetwater (1).mp4" target="_blank" class="col-span-full inline-flex items-center justify-center p-2 bg-black text-white rounded">Play Sweetwater video</a>
-      </div>
-      <div class="mt-3">
-        <a class="btn btn-outline" href="assets/gallery/Sweetwater (1).jpg" download>Download images</a>
       </div>
     </section>
 
@@ -123,11 +115,9 @@
               <source :srcset="makeWebpSrcset(g.src)" type="image/webp" />
               <img class="w-full rounded-lg" :src="g.src" :srcset="makeSrcset(g.src)" sizes="(max-width: 768px) 100vw, 400px" :alt="g.alt" loading="lazy" @error="eyImageFallback($event)" />
             </picture>
-            <a :href="g.src" :download="g.src.split('/').pop()" class="absolute right-2 top-2 bg-white/80 text-xs px-2 py-1 rounded shadow" @click.stop>Download</a>
           </div>
           <figcaption class="text-xs text-slate-600 mt-1 flex items-center justify-between">
             <span x-text="g.caption"></span>
-            <a :href="g.src" :download="g.src.split('/').pop()" class="text-xs underline" @click.stop>Download</a>
           </figcaption>
         </figure>
       </template>
@@ -143,21 +133,10 @@
       </div>
       <div class="mt-3 flex gap-3">
         <a class="btn btn-primary" href="events.html#library-services-recognition">Learn more</a>
-        <a class="btn btn-outline" href="assets/gallery/Library Services Recognition.jpg" download>Download</a>
       </div>
     </section>
 
-    <section id="EndViolence" class="mt-10">
-      <h2 class="font-heading text-xl font-semibold">End Violence Against Women</h2>
-      <p class="text-sm text-slate-600 mt-1">In solidarity with Women for Change we stand against GBV.</p>
-      <div class="mt-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        <a href="assets/gallery/End Violence Against Women.jpg" download><img src="assets/gallery/End Violence Against Women.jpg" alt="End Violence Against Women" class="w-full h-48 object-cover rounded-lg" loading="lazy" /></a>
-      </div>
-      <div class="mt-3 flex gap-3">
-        <a class="btn btn-outline" href="events.html#list">Learn more</a>
-        <a class="btn btn-outline" href="assets/gallery/End Violence Against Women.jpg" download>Download</a>
-      </div>
-    </section>
+
 
     <section id="FinalExams" class="mt-10">
       <h2 class="font-heading text-xl font-semibold">Final Exams — Good luck!</h2>
@@ -167,21 +146,10 @@
       </div>
       <div class="mt-3 flex gap-3">
         <a class="btn btn-outline" href="events.html#list">Learn more</a>
-        <a class="btn btn-outline" href="assets/gallery/Final Exams.jpg" download>Download</a>
       </div>
     </section>
 
-    <section id="Applications" class="mt-10">
-      <h2 class="font-heading text-xl font-semibold">Application Support</h2>
-      <p class="text-sm text-slate-600 mt-1">Application support sessions and drop-ins.</p>
-      <div class="mt-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        <a href="assets/gallery/Applications.jpeg" download><img src="assets/gallery/Applications.jpeg" alt="Applications" class="w-full h-48 object-cover rounded-lg" loading="lazy" /></a>
-      </div>
-      <div class="mt-3 flex gap-3">
-        <a class="btn btn-outline" href="events.html#list">Learn more</a>
-        <a class="btn btn-outline" href="assets/gallery/Applications.jpeg" download>Download</a>
-      </div>
-    </section>
+
 
     <section id="Eastwoood" class="mt-10">
       <h2 class="font-heading text-xl font-semibold">Eastwoood Library — NSFAS Drive</h2>
@@ -199,7 +167,6 @@
       </div>
       <div class="mt-3 flex gap-3">
         <a class="btn btn-primary" href="events.html#nsfas-application-drive-eastwoood">Learn more</a>
-        <a class="btn btn-outline" href="assets/gallery/Eastwoood Library.jpg" download>Download images</a>
       </div>
     </section>
 
@@ -213,7 +180,6 @@
       </div>
       <div class="mt-3 flex gap-3">
         <a class="btn btn-primary" href="events.html#nsfas-msunduzi-youth-office">Learn more</a>
-        <a class="btn btn-outline" href="assets/gallery/Msunduzi Youth_1.jpg" download>Download images</a>
       </div>
     </section>
 
@@ -227,7 +193,6 @@
       </div>
       <div class="mt-3 flex gap-3">
         <a class="btn btn-primary" href="events.html#siyanqoba-extralessons-ncv-nsfas">Learn more</a>
-        <a class="btn btn-outline" href="assets/gallery/Siyanqoba ExtraLessons_1.jpg" download>Download images</a>
       </div>
     </section>
 
@@ -241,7 +206,6 @@
       </div>
       <div class="mt-3 flex gap-3">
         <a class="btn btn-primary" href="events.html#bhekuximba-high-school-application-support">Learn more</a>
-        <a class="btn btn-outline" href="assets/gallery/Bhekuximba_1.jpg" download>Download images</a>
       </div>
     </section>
 
@@ -255,7 +219,6 @@
       </div>
       <div class="mt-3 flex gap-3">
         <a class="btn btn-primary" href="events.html#funda-psychosocial-program">Learn more</a>
-        <a class="btn btn-outline" href="assets/gallery/Funda_1.jpg" download>Download images</a>
       </div>
     </section>
 
@@ -269,7 +232,6 @@
         <img src="assets/gallery/May 19 ____3.jpg" alt="Youth Sports Day" class="w-full h-48 object-cover rounded-lg" loading="lazy" />
       </div>
       <div class="mt-3 flex gap-3">
-        <a class="btn btn-outline" href="assets/gallery/May 19 ____1.jpg" download>Download images</a>
         <a class="btn btn-primary" href="events.html#youth-sports-day-bulwer-2025-06-15">Learn more</a>
       </div>
     </section>
@@ -283,7 +245,6 @@
         <img src="assets/gallery/June 7___3.jpg" alt="Mandlezizwe" class="w-full h-48 object-cover rounded-lg" loading="lazy" />
       </div>
       <div class="mt-3 flex gap-3">
-        <a class="btn btn-outline" href="assets/gallery/June 7___1.jpg" download>Download images</a>
         <a class="btn btn-primary" href="events.html#mandlezizwe-application-support-2025-06-07">Learn more</a>
       </div>
     </section>
@@ -296,7 +257,6 @@
         <img src="assets/gallery/May 20____2.jpg" alt="Copesville CAO Drive" class="w-full h-48 object-cover rounded-lg" loading="lazy" />
       </div>
       <div class="mt-3 flex gap-3">
-        <a class="btn btn-outline" href="assets/gallery/May 20____1.jpg" download>Download images</a>
         <a class="btn btn-primary" href="events.html#cao-copesville-2025-05-20">Learn more</a>
       </div>
     </section>
@@ -309,7 +269,6 @@
         <a href="assets/gallery/May 15 ____2.jpg" download><img src="assets/gallery/May 15 ____2.jpg" alt="Umvuzo" class="w-full h-48 object-cover rounded-lg" loading="lazy" /></a>
       </div>
       <div class="mt-3 flex gap-3">
-        <a class="btn btn-outline" href="assets/gallery/May 15 ____1.jpg" download>Download images</a>
         <a class="btn btn-primary" href="events.html#umvuzo-high-school-2025-05-15">Learn more</a>
       </div>
     </section>
