@@ -14,41 +14,6 @@
   <link rel="stylesheet" href="assets/css/site.prod.css" />
   <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
   <script defer src="assets/js/site.js"></script>
-  <!-- Firebase -->
-  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js"></script>
-  <script>
-    // Firebase configuration - replace with your actual config from Firebase console
-    const firebaseConfig = {
-      apiKey: "your-api-key",
-      authDomain: "your-project.firebaseapp.com",
-      projectId: "your-project-id",
-      storageBucket: "your-project.appspot.com",
-      messagingSenderId: "123456789",
-      appId: "your-app-id"
-    };
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-    const db = firebase.firestore();
-
-    // Function to submit form data to Firebase
-    async function submitToFirebase(event, formName) {
-      event.preventDefault();
-      const form = event.target;
-      const formData = new FormData(form);
-      const data = Object.fromEntries(formData.entries());
-      data.timestamp = new Date();
-      data.form = formName;
-      try {
-        await db.collection('form-submissions').add(data);
-        alert('Form submitted successfully!');
-        form.reset();
-      } catch (error) {
-        console.error('Error submitting form:', error);
-        alert('Error submitting form. Please try again.');
-      }
-    }
-  </script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"/>
 </head>
 <body class="font-body text-ink bg-white">
@@ -96,8 +61,9 @@
 
     <section id="volunteer" class="mt-8 p-6 bg-slate-50 rounded-lg border" data-aos="fade-up" data-aos-delay="120">
       <h2 class="font-heading text-xl font-semibold">Volunteer Signup</h2>
-      <form name="volunteer" method="POST" onsubmit="submitToFirebase(event, 'volunteer')" class="mt-4 grid sm:grid-cols-2 gap-4">
-        <input type="hidden" name="form-name" value="volunteer" />
+      <form action="https://formsubmit.co/empoweringyouthkzn@gmail.com" method="POST" class="mt-4 grid sm:grid-cols-2 gap-4">
+        <input type="hidden" name="_subject" value="Volunteer Signup" />
+        <input type="hidden" name="_captcha" value="false" />
         <input class="input" name="full_name" placeholder="Full name" required />
         <input class="input" type="email" name="email" placeholder="Email" required />
         <input class="input" name="phone" placeholder="Phone" />
@@ -134,8 +100,9 @@
 
     <section id="partner" class="mt-8 p-6 bg-slate-50 rounded-lg border" data-aos="fade-up" data-aos-delay="200">
       <h2 class="font-heading text-xl font-semibold">Partner With Us</h2>
-      <form name="partner" method="POST" onsubmit="submitToFirebase(event, 'partner')" class="mt-4 grid sm:grid-cols-2 gap-4">
-        <input type="hidden" name="form-name" value="partner" />
+      <form action="https://formsubmit.co/empoweringyouthkzn@gmail.com" method="POST" class="mt-4 grid sm:grid-cols-2 gap-4">
+        <input type="hidden" name="_subject" value="Partnership Inquiry" />
+        <input type="hidden" name="_captcha" value="false" />
         <input class="input" name="org_name" placeholder="Organization name" required />
         <input class="input" name="contact_person" placeholder="Contact person" required />
         <input class="input" type="email" name="email" placeholder="Email" required />
@@ -179,8 +146,9 @@
       </div>
       <div>
         <h4 class="font-heading font-semibold">Newsletter</h4>
-        <form name="newsletter" method="POST" onsubmit="submitToFirebase(event, 'newsletter')" class="mt-3 flex gap-2">
-          <input type="hidden" name="form-name" value="newsletter" />
+        <form action="https://formsubmit.co/empoweringyouthkzn@gmail.com" method="POST" class="mt-3 flex gap-2">
+          <input type="hidden" name="_subject" value="Newsletter Signup" />
+          <input type="hidden" name="_captcha" value="false" />
           <input required aria-label="Email" type="email" name="email" placeholder="Email address" class="flex-1 px-3 py-2 rounded-md text-ink" />
           <button class="px-4 py-2 rounded-md bg-accent text-ink font-semibold">Sign up</button>
         </form>
